@@ -9,15 +9,15 @@ Page({
   data: {
     userInfo:'',
     upperItemData:[  //进入该页面时请求数据
-      {name:"我收藏的",imgUrl:'../../picture/收藏未选中.png',num:-1,jumpid:1},
-      {name:"去购物车",imgUrl:'../../picture/购物车未选中.png',num:-1,jumpid:2},
-      {name:"卡包",imgUrl:'../../picture/卡包.png',num:-1,jumpid:3}
+      {name:"我收藏的",imgUrl:'../../picture/colUnselect.png',num:-1,jumpid:1},
+      {name:"去购物车",imgUrl:'../../picture/spcUnselect.png',num:-1,jumpid:2},
+      {name:"卡包",imgUrl:'../../picture/kaBao.png',num:-1,jumpid:3}
     ],
     orderstatusData:[
-      {name:"待发货",imgUrl:'../../picture/未发货.png',jumpid:1},
-      {name:"待收货",imgUrl:'../../picture/待收货.png',jumpid:2},
-      {name:"已收货",imgUrl:'../../picture/已收货.png',jumpid:3},
-      {name:"退货中",imgUrl:'../../picture/退货.png',jumpid:4},
+      {name:"待发货",imgUrl:'../../picture/weiFaHuo.png',jumpid:1},
+      {name:"待收货",imgUrl:'../../picture/daiShouHuo.png',jumpid:2},
+      {name:"已收货",imgUrl:'../../picture/yiShouHuo.png',jumpid:3},
+      {name:"退货中",imgUrl:'../../picture/tuiHuo.png',jumpid:4},
     ]
   },
 

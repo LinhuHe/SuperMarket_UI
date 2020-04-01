@@ -81,6 +81,7 @@
 
 .more-img
 {
+  width: 100%;
   background-color: whitesmoke;
   border-top:5rpx #E6E6FA solid ;
   border-bottom:5rpx #E6E6FA solid ;

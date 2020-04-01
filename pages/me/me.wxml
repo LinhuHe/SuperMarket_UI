@@ -23,7 +23,7 @@
   <view class='orderlist'>
     <text>全部订单</text>
     <text class='check-orderlist'>查看全部订单</text>
-    <image class='into-orderlist' src='../../picture/右尖括弧.png'></image>
+    <image class='into-orderlist' src='../../picture/youJianKuoHao.png'></image>
   </view>
 
   <view class='light-line'></view>
@@ -41,7 +41,7 @@
 <view class='bottom'> <!--底层 商家相关-->
 
   <view class='shoperlist'>
-    <image class='shoper-img' src='../../picture/我是商家.png'></image>
+    <image class='shoper-img' src='../../picture/ImShoper.png'></image>
     <text>我是商家</text>
   </view> 
 

@@ -10,12 +10,12 @@ Page({
       {name:"还是一款神奇的抗雾霾防有神器真的巨实惠现在买送8838手机一台不管多长的文字他都能放下",shoper:"wo",src:"../../picture/收藏选中.png",priceL:17.5,priceH:56.8,type:"运动",col:20,sales:2}
     ],
     moreImg:[
-    "../../picture/我选中.png",
-    "../../picture/退货.png",
-    "../../picture/购物车未选中.png",
-    "../../picture/收藏未选中.png"
+    "../../picture/meSelect.png",
+    "../../picture/tuiHuo.png",
+    "../../picture/spcUnselect.png",
+    "../../picture/colSelect.png"
     ],
-    iscollect:["../../picture/用户未收藏.png",0]
+    iscollect:["../../picture/userUncollect.png",0]
   },
 
   tapOnCollect() //不完整的方法 向数据库传值的请求还没写 目前只满足了本地测试
@@ -23,13 +23,13 @@ Page({
     if(this.data.iscollect[1]==0)
     {
       this.setData({
-        iscollect:["../../picture/用户已收藏.png",1]
+        iscollect:["../../picture/userCollected.png",1]
       })
     }
     else if(this.data.iscollect[1]==1)
     {
       this.setData({
-        iscollect:["../../picture/用户未收藏.png",0]
+        iscollect:["../../picture/userUncollect.png",0]
       })
     }
    
