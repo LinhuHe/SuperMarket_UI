@@ -1,0 +1,15 @@
+<!--index.wxml-->
+
+<view wx:for="{{player}}">{{item.name}}</view>
+<button size="mini" bindtap="tapOnButton">+</button>
+<view>{{counter}}</view>
+
+<checkbox checked="{{false}}">aaaaa</checkbox>
+
+<view class="line"></view>
+
+<view class='in'>
+<view>
+1111
+</view>
+</view>

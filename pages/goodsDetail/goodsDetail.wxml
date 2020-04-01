@@ -1,0 +1,45 @@
+<!--pages/goodsDetail/goodsDetail.wxml-->
+<view class='baseInfo'>
+  <image class='goodImg' src="{{goodInfo[0].src}}"></image>
+  <view class='goodPrice'>￥{{goodInfo[0].priceL}}-{{goodInfo[0].priceH}}</view>
+  <view class='goodType'>@{{goodInfo[0].type}}</view>
+  <view class='goodName'>{{goodInfo[0].name}}</view>
+  <view class = 'cs-info'>
+    <view>
+    <image class = 'col-img' src='../../picture/商品被收藏次数.png'></image>
+    收藏量：{{goodInfo[0].col}}
+    </view> 
+    <view>
+    <image class='sales-img' src='../../picture/销量.png'></image>
+    总销售量：{{goodInfo[0].sales}}
+    </view>
+  </view>
+
+  <view class='more'>
+    <block wx:for="{{moreImg}}">
+      <view class='more-view'>
+        <image class = 'more-img' src="{{item}}"></image>
+      </view>
+    </block>
+  </view>
+
+</view>
+
+
+
+
+<view class='bottomTabar'>
+  <view class='icon'>
+    <image class = 'icon-img' src='../../picture/商家店铺.png'></image>
+    <view>店铺</view>
+    <image class = 'icon-img' src='../../picture/客服.png'></image>
+    <view>客服</view>
+    <image class = 'icon-img' src='{{iscollect[0]}}' bindtap="tapOnCollect"></image>
+    <view>收藏</view>
+  </view>
+
+  <view class='button'>
+    <view class='spc'>加入购物车</view>
+    <view class='buy'>立即购买</view>
+  </view>
+</view>

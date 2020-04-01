@@ -1,0 +1,24 @@
+<!--pages/home/home.wxml-->
+<view class='search'>搜索框预留</view>
+
+<view class='swpier-text'>向您推荐</view>
+<swiper indicator-dots="true" indicator-active-color="#363636" autoplay="true" interval="2000" previous-margin="50rpx" next-margin="50rpx">
+  
+  <block wx:for="{{swiperimgs}}">
+    <swiper-item class = 'swiper-img'>
+    <image src="{{item.src}}" mode="scaleToFill"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<scroll-view scroll-y>
+  <view class = 'scroll-imgs'>
+    <block wx:for="{{goodsData}}">
+      <view class='single-good' >
+        <image class='scroll-img' src="{{item.src}}" catchtap="tapOnImg" data-rid="{{item.rid}}"></image>
+        <view class = 'single-name'>{{item.name}}</view>
+        <view class = 'single-price'>￥{{item.price}}</view>
+      </view>
+    </block>
+  </view>
+</scroll-view>

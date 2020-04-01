@@ -1,0 +1,157 @@
+/* pages/me/me.wxss */
+.view-upper{
+  width: 750rpx;
+  height: 400rpx;
+  background-color: #FFFAF0;
+  display: flex;
+  flex-direction: row;
+  border-top:5rpx #E6E6FA solid ;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+  
+}
+
+.userinfo-nickname{
+  width: 170rpx;
+  font-size: 40rpx;
+  text-align: center;
+  position: relative;
+  top: 50rpx;
+}
+
+.upperItem{
+  margin-top: 190rpx;
+  display: flex;
+  position: absolute;
+  width: 750rpx;
+}
+.upperItem .upperItem-view
+{
+  position: relative;
+  display: flex;
+  width: 33.33%;
+  flex-direction: column;
+  font-size: 30rpx;
+  color: #8B8989;
+  align-items: center;
+}
+
+.upperItem .upperItem-view .upperItem-img
+{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 5rpx;
+}
+
+.view-middle
+{
+  width: 750rpx;
+  height: 300rpx;
+  background-color: #FFFAF0;
+  margin-top: 30rpx;
+  border-top: 5rpx  #E6E6FA solid;
+  border-bottom: 5rpx  #E6E6FA solid;
+  border-radius: 20rpx;
+}
+
+.orderlist
+{
+  width: 750rpx;
+  height: 60rpx;
+  font-size: 35rpx;
+  display: flex;
+  flex-direction: row;
+  color: gray;
+  margin-left: 10rpx;
+  align-items: center;
+}
+.check-orderlist
+{
+  position: absolute;
+  right: 40rpx;
+  text-align: right;
+}
+
+.into-orderlist
+{
+  height: 35rpx;
+  width: 35rpx;
+  position: absolute;
+  right: 5rpx;
+
+}
+
+.orderstatus
+{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5rpx;
+}
+
+.single-status
+{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  font-size: 30rpx;
+  color: #8B8989;
+  align-items: center;
+}
+
+.status-img
+{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+}
+
+.bottom
+{
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  align-items: center;
+  background-color: #FFFAF0;
+  margin-top: 20rpx;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-top:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+}
+
+.shoper-img
+{
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 5rpx;
+  margin-right: 10rpx;
+}
+
+.shoperlist
+{
+  width: 100%;
+  height: 80rpx;
+  position: relative;
+  text-align: center;
+  border: 3rpx lightgray solid;
+  border-radius: 10rpx;
+  font-size: 40rpx;
+  background-color: lightgray;
+}
+
+.light-line
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 3rpx;
+  background-color: lightgray; 
+}

@@ -1,0 +1,19 @@
+/**index.wxss**/
+.viewtest{
+  height: 200rpx;
+  width: 200rpx;
+  color: aqua;
+  border:2rpx solid black;
+  line-height: 500rpx;
+}
+
+.line{
+  width: 100%;
+  height: 5rpx;
+  background-color: aqua;
+}
+
+.in view{
+  font-size: 100rpx;
+  border: 10rpx black solid;
+}

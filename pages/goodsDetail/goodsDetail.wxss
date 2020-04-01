@@ -1,0 +1,161 @@
+/* pages/goodsDetail/goodsDetail.wxss */
+.baseInfo
+{
+  width: 100%;
+  height: auto;
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+  margin-bottom: 50rpx;
+  /*flex-wrap: wrap;*/
+}
+
+.goodImg
+{
+  width: 99.5%;
+  border: 2rpx black solid;
+  border-radius: 10rpx;
+}
+
+.goodPrice
+{
+  font-size: 50rpx;
+  color: red;
+}
+
+.goodType
+{
+  font-size: 30rpx;
+  color: gray;
+  margin-top: 30rpx;
+ font-style: oblique;
+}
+.goodName
+{
+  /*height: auto;*/
+  max-height: 90;
+  margin-top: 20rpx;
+  color: black;
+  font-size: 45rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  overflow: scroll;
+}
+
+.cs-info
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: gray;
+  font-size: 40rpx;
+  margin-bottom: 5rpx;
+  margin-top: 5rpx;
+}
+.cs-info .col-img
+{
+  margin-top: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.cs-info .sales-img
+{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.more
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.more-view
+{
+  width: 100%;
+}
+
+.more-img
+{
+  background-color: whitesmoke;
+  border-top:5rpx #E6E6FA solid ;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+
+.bottomTabar
+{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  height: 150rpx;
+  background-color: white;
+  border-top:5rpx #E6E6FA solid ;
+  display: flex;
+  flex-direction: row;
+  
+  border-radius: 20rpx;
+}
+.bottomTabar .icon
+{
+  height: 150rpx;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+  color: gray;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 20rpx;
+}
+
+.bottomTabar .icon .icon-img
+{  
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.bottomTabar .button
+{
+  width: 60%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 35rpx;
+  margin-top: 25rpx;
+  margin-right: 10rpx;
+  color:#D3D3D3;
+  font-weight: bold;
+}
+
+.bottomTabar .button .spc
+{
+  width: 50%;
+  height: 68rpx;
+  background-color: #FFA500;
+  text-align: center;
+  padding-top: 33rpx;
+  border-bottom-left-radius:40%;
+  border-top-left-radius: 40%;
+
+}
+
+.bottomTabar .button .buy
+{
+  width: 50%;
+  height: 68rpx;
+  background-color: #FF4500;
+  text-align: center;
+  padding-top: 33rpx;
+  border-bottom-right-radius: 40%;
+  border-top-right-radius: 40%;
+}
+

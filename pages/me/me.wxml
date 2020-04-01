@@ -1,0 +1,52 @@
+<!--pages/me/me.wxml-->
+<view class="view-upper"> <!--上半部分，用户信息和下面的一列图标-->
+ <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
+  
+  <view class = 'userinfo-nickname'>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  
+
+  <view class='upperItem'>
+  
+    <block wx:for="{{upperItemData}}">
+      <view class='upperItem-view'>
+        <text>{{item.num}}</text>
+        <image class='upperItem-img' src='{{item.imgUrl}}' catchtap="upperItemToUrl" data-jumpId="{{item.jumpid}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<view class='view-middle'> <!--中间部分 查看订单相关-->
+  <view class='orderlist'>
+    <text>全部订单</text>
+    <text class='check-orderlist'>查看全部订单</text>
+    <image class='into-orderlist' src='../../picture/右尖括弧.png'></image>
+  </view>
+
+  <view class='light-line'></view>
+<view class='orderstatus'>
+    <block wx:for='{{orderstatusData}}'>
+    <view class = 'single-status'>
+      <image class='status-img' src='{{item.imgUrl}}'></image>
+      <view>{{item.name}}</view>
+    </view> 
+    </block>
+</view>
+  <view class='light-line'></view>
+</view>
+
+<view class='bottom'> <!--底层 商家相关-->
+
+  <view class='shoperlist'>
+    <image class='shoper-img' src='../../picture/我是商家.png'></image>
+    <text>我是商家</text>
+  </view> 
+
+</view>
+
+
+
+
