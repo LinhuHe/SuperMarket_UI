@@ -7,7 +7,7 @@ Page({
   data: {
     rid:0,
     goodInfo:[
-      {name:"还是一款神奇的抗雾霾防有神器真的巨实惠现在买送8838手机一台不管多长的文字他都能放下",shoper:"wo",src:"../../picture/收藏选中.png",priceL:17.5,priceH:56.8,type:"运动",col:20,sales:2}
+      {name:"还是一款神奇的抗雾霾防有神器真的巨实惠现在买送8838手机一台不管多长的文字他都能放下",shoper:"wo",src:"../../picture/colUnselect.png",priceL:17.5,priceH:56.8,type:"运动",col:20,sales:2}
     ],
     moreImg:[
     "../../picture/meSelect.png",

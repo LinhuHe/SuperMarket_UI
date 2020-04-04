@@ -77,6 +77,12 @@
 					"pathName": "pages/goodsDetail/goodsDetail",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收藏夹",
+					"pathName": "pages/collection/collection",
+					"scene": null
 				}
 			]
 		}

@@ -1,2 +1,19 @@
 <!--pages/collection/collection.wxml-->
-<text>pages/collection/collection.wxml</text>
+<view class='wholeCollection'>
+  <block wx:for="{{colData}}">
+    <view class='singleCollection' bindtap="tapOnItem" data-rid="{{item.rid}}">
+      <image class='collection-img' src='{{item.src}}'></image>
+      <view class='singleInfo'>
+        <view class='single-name'>{{item.name}}</view>
+        <view class='single-cs'>{{item.collect}}人收藏 | 总销量{{item.sales}}</view>
+        <view wx:if="{{item.isOnSale==1}}" class='single-price'>￥{{item.priceL}}-{{item.priceH}}</view>   
+        <view wx:else class='single-status'>
+          <view class='single-font'>失效</view>
+        </view>
+        <view class='Uncollect' catchtap="taoOnUnCollection" data-rid="{{item.rid}}">
+          <text>取消收藏</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

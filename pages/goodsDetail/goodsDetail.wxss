@@ -22,7 +22,7 @@
 .goodPrice
 {
   font-size: 50rpx;
-  color: red;
+  color: OrangeRed;
 }
 
 .goodType
