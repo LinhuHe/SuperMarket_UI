@@ -1,2 +1,35 @@
 <!--pages/shopcart/shopcart.wxml-->
-<text>pages/shopcart/shopcart.wxml</text>
+<checkbox-group  catchchange="selected">
+<block wx:for="{{shopCartData}}">
+<view class='wholeShop'>
+  <view class='shoper-name'>{{item[0].shoper}}的商店
+      <block wx:for="{{item}}">
+        <view class='singleGood' data-rid='{{item.rid}}'>
+          <checkbox wx:if="{{item.isOnSale==1}}" class='isSelect' value="{{item.price}}"></checkbox>
+          <checkbox wx:else class='isSelect' value="{{item.price}}" disabled="{{true}}"></checkbox>
+          <image class='single-img' src="{{item.src}}" catchtap="tapOnGood"></image>
+          <view class='single-info' catchtap="tapOnGood">
+            <view class='single-name'>{{item.name}}</view>
+            <view class='single-color-size'>颜色:{{item.color}}  |   规格:{{item.size}}</view>
+            <view wx:if="{{item.isOnSale==1}}" class='single-price'>￥{{item.price}}</view>
+            <view wx:else class='single-status'>
+              <view class='single-font'>失效</view>
+            </view>
+            <view class='remove' catchtap="removeShopcart" data-did="{{item.did}}">移除该商品</view>
+          </view>
+        </view>
+        <view class='line'></view>
+      </block>
+  </view>  
+</view>
+</block>
+</checkbox-group> 
+
+<view class='buy'>
+  <view class='priceShow'>
+    <view class='heji'>合计:</view>
+    <view class='price'>￥{{totalPrice}}</view>
+  </view>
+  
+  <view class='buynow'><view class="offset">购买</view></view>
+</view>

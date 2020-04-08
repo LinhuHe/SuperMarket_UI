@@ -82,6 +82,13 @@
 					"id": -1,
 					"name": "收藏夹",
 					"pathName": "pages/collection/collection",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/shopcart/shopcart",
 					"scene": null
 				}
 			]
