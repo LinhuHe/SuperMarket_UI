@@ -15,9 +15,9 @@
   <view class = 'scroll-imgs'>
     <block wx:for="{{goodsData}}">
       <view class='single-good' >
-        <image class='scroll-img' src="{{item.src}}" catchtap="tapOnImg" data-rid="{{item.rid}}"></image>
-        <view class = 'single-name'>{{item.name}}</view>
-        <view class = 'single-price'>￥{{item.price}}</view>
+        <image class='scroll-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" catchtap="tapOnImg" data-rid="{{item.goodsRid}}"></image>
+        <view class = 'single-name'>{{item.goodsName}}</view>
+        <view class = 'single-price'>￥{{item.priceL}}-{{item.priceH}}</view>
       </view>
     </block>
   </view>

@@ -1,24 +1,24 @@
 <!--pages/goodsDetail/goodsDetail.wxml-->
 <view class='baseInfo'>
-  <image class='goodImg' src="{{goodInfo[0].src}}"></image>
-  <view class='goodPrice'>￥{{goodInfo[0].priceL}}-{{goodInfo[0].priceH}}</view>
-  <view class='goodType'>@{{goodInfo[0].type}}</view>
-  <view class='goodName'>{{goodInfo[0].name}}</view>
+  <image class='goodImg' src="{{service}}/userPic/{{goodInfo.goodsShoper}}/{{goodInfo.goodsProtrait}}"></image>
+  <view class='goodPrice'>￥{{goodInfo.priceL}}-{{goodInfo.priceH}}</view>
+  <view class='goodType'>@{{goodInfo.goodsType}}</view>
+  <view class='goodName'>{{goodInfo.goodsName}}</view>
   <view class = 'cs-info'>
     <view>
     <image class = 'col-img' src='../../picture/timesOfCollect.png'></image>
-    收藏量：{{goodInfo[0].col}}
+    收藏量：{{goodInfo.goodsCollection}}
     </view> 
     <view>
     <image class='sales-img' src='../../picture/xiaoLiang.png'></image>
-    总销售量：{{goodInfo[0].sales}}
+    总销售量：{{goodInfo.goodsSales}}
     </view>
   </view>
 
   <view class='more'>
-    <block wx:for="{{moreImg}}">
+    <block wx:for="{{moreImgs}}">
       <view class='more-view'>
-        <image class = 'more-img' src="{{item}}"></image>
+        <image class = 'more-img' src="{{service}}/userPic/{{goodInfo.goodsShoper}}/{{item}}"></image>
       </view>
     </block>
   </view>

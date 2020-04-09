@@ -22,8 +22,8 @@ App({
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
               
-              console.log("app.js/wx.getSetting↓")
-              console.log(this.globalData.userInfo)
+              //console.log("app.js/wx.getSetting↓")
+              //console.log(this.globalData.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -38,7 +38,7 @@ App({
     wx.login({
       success: (res) => {
         // 获取到用户的 code 之后：res.code
-        console.log("用户的code:" + res.code);
+        //console.log("用户的code:" + res.code);
         // 可以传给后台，再经过解析获取用户的 openid
         // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
         wx.request({
@@ -58,6 +58,7 @@ App({
   
   globalData: {
     userInfo: null,
-    openId:""
+    openId:"",
+    Service:"http://30bm574434.zicp.vip/"
   }
 })

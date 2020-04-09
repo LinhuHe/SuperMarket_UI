@@ -1,20 +1,17 @@
 // pages/goodsDetail/goodsDetail.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    service : app.globalData.Service,
     rid:0,
-    goodInfo:[
-      {name:"还是一款神奇的抗雾霾防有神器真的巨实惠现在买送8838手机一台不管多长的文字他都能放下",shoper:"wo",src:"../../picture/colUnselect.png",priceL:17.5,priceH:56.8,type:"运动",col:20,sales:2}
-    ],
-    moreImg:[
-    "../../picture/meSelect.png",
-    "../../picture/tuiHuo.png",
-    "../../picture/spcUnselect.png",
-    "../../picture/colSelect.png"
-    ],
+    goodInfo:[],
+    moreImg:"",
+    moreImgs:[],
     iscollect:["../../picture/userUncollect.png",0]
   },
 
@@ -41,23 +38,47 @@ Page({
    */
   onLoad: function (options) { /*接收home来的参数 rid*/ 
     this.setData({
-        rid:options.rid
-      })
-      console.log("this.data.rid="+this.data.rid)
+      rid:options.rid
+    })
+    console.log("this.data.rid="+this.data.rid)
+
+    let that = this;
+    wx.request({
+      url: this.data.service+'GoodsRough/findGoodShowInfoByRid/'+this.data.rid,
+      success(res){
+        that.setData({
+          goodInfo: res.data,
+          moreImg: res.data.goodsMoreimg
+        })
+        console.log(that.data.goodInfo)
+        //console.log(that.data.moreImg)
+
+        if(that.data.moreImg!=null){
+        var temp = that.data.moreImg.split("/")
+        that.setData({
+          moreImgs : temp
+        })
+        console.log(that.data.moreImg)
+        console.log(that.data.moreImgs)
+        }
+        
+      }  
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+   
+   
   },
 
   /**
