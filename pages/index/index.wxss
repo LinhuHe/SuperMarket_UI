@@ -17,3 +17,27 @@
   font-size: 100rpx;
   border: 10rpx black solid;
 }
+
+.f1{
+  width: 100%;
+  background-color: bisque;
+  position: fixed;
+  bottom: 0rpx;
+}
+
+.f2{
+  height: 300rpx;
+  width: 100%;
+  background-color: blueviolet;
+}
+
+.f2{
+  height: 200rpx;
+  width: 100%;
+  background-color: blue;
+}
+.picker
+{
+  width: 100%;
+  height: 500rpx;
+}

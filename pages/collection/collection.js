@@ -1,26 +1,51 @@
 // pages/collection/collection.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    colData:
-    [
-      {rid:"1",name:"1231fqee13r23ty3h54uj256whtfW234Y5GH3FE456",priceL:1.25,priceH:5.36,src:"../../picture/kaBao.png",collect:115,sales:35,isOnSale:"1"},
-      {rid:"2",name:"12sdas456",priceL:54.25,priceH:5653.36,src:"../../picture/meSelect.png",collect:15,sales:51,isOnSale:"1"},
-      {rid:"3",name:"1asfgrwqd456",priceL:23.25,priceH:5342.36,src:"../../picture/spcUnselect.png",collect:515,sales:152,isOnSale:"1"},
-      {rid:"4",name:"abdfj456",priceL:564.25,priceH:74345.36,src:"../../picture/tuiHuo.png",collect:75,sales:55,isOnSale:"0"},
-    ]
+    service:app.globalData.Service,
+    //openid:app.globalData.openId,
+    colData:[]
   },
 
   taoOnUnCollection(event)  /*取消收藏 还需要传openid*/
   {
+    let that = this
     console.log("取消收藏"+event.currentTarget.dataset.rid);
+    wx.request({
+      url: this.data.service+'CollectionController/deleteCollectionByKey/',
+      data:{
+        uid:app.globalData.openId,
+        rid:event.currentTarget.dataset.rid
+      },
+      success(res)
+      {
+        //console.log(res)
+        if(res.data==1)
+        {
+          wx.showModal({
+            title: '提示',
+            content: '商品已从收藏夹删除',
+          })
+        that.onLoad()
+        }
+        if(res.data==0)
+        {
+          wx.showModal({
+            title: '提示',
+            content: '商品不存在',
+          })
+        that.onLoad()
+        }
+      }
+    })
   },
   tapOnItem(event) /*点到某个商品 跳转 */
   {
-    console.log("进入商品"+event.currentTarget.dataset.rid);
+    console.log(event.currentTarget.dataset);
     wx.navigateTo({
       url: '../goodsDetail/goodsDetail?rid='+event.currentTarget.dataset.rid
     })
@@ -29,7 +54,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    wx.request({
+      url: this.data.service+'CollectionController/getCollectedGoodsShowInfo/'+app.globalData.openId,
+      success(res)
+      {
+        that.setData({
+          colData : res.data
+        })
+        console.log(that.data.colData)
+      }
+    })
   },
 
   /**
@@ -43,7 +78,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**
@@ -64,7 +99,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
+    wx.stopPullDownRefresh();
   },
 
   /**

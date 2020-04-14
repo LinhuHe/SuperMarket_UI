@@ -1,16 +1,16 @@
 <!--pages/collection/collection.wxml-->
 <view class='wholeCollection'>
   <block wx:for="{{colData}}">
-    <view class='singleCollection' bindtap="tapOnItem" data-rid="{{item.rid}}">
-      <image class='collection-img' src='{{item.src}}'></image>
+    <view class='singleCollection' bindtap="tapOnItem" data-rid="{{item.goodsRid}}">
+      <image class='collection-img' src='{{service}}userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
       <view class='singleInfo'>
-        <view class='single-name'>{{item.name}}</view>
-        <view class='single-cs'>{{item.collect}}人收藏 | 总销量{{item.sales}}</view>
+        <view class='single-name'>{{item.goodsName}}</view>
+        <view class='single-cs'>{{item.goodsCollection}}人收藏 | 总销量{{item.goodsSales}}</view>
         <view wx:if="{{item.isOnSale==1}}" class='single-price'>￥{{item.priceL}}-{{item.priceH}}</view>   
         <view wx:else class='single-status'>
           <view class='single-font'>失效</view>
         </view>
-        <view class='Uncollect' catchtap="taoOnUnCollection" data-rid="{{item.rid}}">
+        <view class='Uncollect' catchtap="taoOnUnCollection" data-rid="{{item.goodsRid}}">
           <text>取消收藏</text>
         </view>
       </view>

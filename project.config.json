@@ -89,6 +89,13 @@
 					"id": -1,
 					"name": "购物车",
 					"pathName": "pages/shopcart/shopcart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
 					"scene": null
 				}
 			]

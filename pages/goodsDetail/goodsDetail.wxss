@@ -123,9 +123,18 @@
   width: 60rpx;
 }
 
-.bottomTabar .button
+.goodpicker
 {
   width: 60%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bottomTabar .button
+{
+  width: 350rpx;
   height: 150rpx;
   display: flex;
   flex-direction: row;
@@ -137,7 +146,9 @@
   font-weight: bold;
 }
 
-.bottomTabar .button .spc
+
+
+.bottomTabar .spc
 {
   width: 50%;
   height: 68rpx;
@@ -149,7 +160,7 @@
 
 }
 
-.bottomTabar .button .buy
+.bottomTabar .buy
 {
   width: 50%;
   height: 68rpx;

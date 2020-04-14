@@ -9,7 +9,16 @@
 <view class="line"></view>
 
 <view class='in'>
-<view>
+<view bindtap="tapToShow">
 1111
 </view>
 </view>
+
+<picker mode="multiSelector" value="{{pickerindex}}" range="{{pickercolum}}" class = 'picker' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange">
+  <view>{{pickercolum[0][pickerindex[1]]}} {{pickercolum[1][pickerindex[1]]}} {{pickercolum[2][pickerindex[2]]}}</view>
+</picker>
+
+<picker value="{{indexx}}" range="{{arrays}}">
+  <view>{{arrays[indexx]}}</view>
+  <image src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png"></image>
+</picker>

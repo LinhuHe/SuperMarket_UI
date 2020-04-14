@@ -34,12 +34,14 @@
     <view>店铺</view>
     <image class = 'icon-img' src='../../picture/kefu.png'></image>
     <view>客服</view>
-    <image class = 'icon-img' src='{{iscollect[0]}}' bindtap="tapOnCollect"></image>
+    <image class = 'icon-img' src='{{iscollect[0]}}' bindtap="tapOnCollect" data-rid="{{goodInfo.goodsRid}}"></image>
     <view>收藏</view>
   </view>
 
-  <view class='button'>
-    <view class='spc'>加入购物车</view>
-    <view class='buy'>立即购买</view>
-  </view>
+  <picker class='goodpicker' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{pickerindex}}" range="{{pickercolumn}}">
+    <view class='button'>
+      <view class='spc' bindtap="tapOnShopcart">加入购物车</view>
+      <view class='buy' bindtap="'tapOnBuy'">立即购买</view>
+    </view>
+  </picker>
 </view>
