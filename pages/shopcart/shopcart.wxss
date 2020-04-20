@@ -31,10 +31,24 @@
   margin-top: 100rpx;
 }
 
+.single-img-stock
+{
+  display: flex;
+  flex-direction:  column;
+  width: 35%;
+}
+
 .single-img
 {
+  margin-top: 20rpx;
   height: 263rpx;
-  width: 35%;
+  width: 100%;
+}
+
+.single-stock
+{
+  font-size:  40rpx;
+  color:gray;
 }
 
 .single-info

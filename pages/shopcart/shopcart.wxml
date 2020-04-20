@@ -2,20 +2,26 @@
 <checkbox-group  catchchange="selected">
 <block wx:for="{{shopCartData}}">
 <view class='wholeShop'>
-  <view class='shoper-name'>{{item[0].shoper}}的商店
+  <view class='shoper-name'>{{item[0].goodsShoper}}的商店
       <block wx:for="{{item}}">
-        <view class='singleGood' data-rid='{{item.rid}}'>
-          <checkbox wx:if="{{item.isOnSale==1}}" class='isSelect' value="{{item.price}}"></checkbox>
-          <checkbox wx:else class='isSelect' value="{{item.price}}" disabled="{{true}}"></checkbox>
-          <image class='single-img' src="{{item.src}}" catchtap="tapOnGood"></image>
+        <view class='singleGood' data-rid='{{item.goodsRid}}'>
+          <checkbox wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='isSelect' value="{{item.goodsPrice}}"></checkbox>
+          <checkbox wx:else class='isSelect' value="{{item.goodsPrice}}" disabled="{{true}}"></checkbox>
+          <view class='single-img-stock'>
+            <image class='single-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" catchtap="tapOnGood"></image>
+            <view class = 'single-stock'>库存:{{item.goodsStock}}</view>
+          </view>
           <view class='single-info' catchtap="tapOnGood">
-            <view class='single-name'>{{item.name}}</view>
-            <view class='single-color-size'>颜色:{{item.color}}  |   规格:{{item.size}}</view>
-            <view wx:if="{{item.isOnSale==1}}" class='single-price'>￥{{item.price}}</view>
+            <view class='single-name'>{{item.goodsName}}</view>
+            <view class='single-color-size'>颜色:{{item.goodsColor}}  |   规格:{{item.goodsSize}}</view>
+            <view wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='single-price'>￥{{item.goodsPrice}}</view>
+            <view wx:elif="{{item.goodsStock<=0}}" class='single-status'>
+              <view class='single-font'>售罄</view>
+            </view>
             <view wx:else class='single-status'>
               <view class='single-font'>失效</view>
             </view>
-            <view class='remove' catchtap="removeShopcart" data-did="{{item.did}}">移除该商品</view>
+            <view class='remove' catchtap="removeShopcart" data-did="{{item.goodsDid}}">移除该商品</view>
           </view>
         </view>
         <view class='line'></view>

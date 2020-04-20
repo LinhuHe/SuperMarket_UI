@@ -1,10 +1,12 @@
 // pages/shopcart/shopcart.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    service : app.globalData.Service,
     shopers:[
       "shea",
       "woshimaijia",
@@ -12,7 +14,7 @@ Page({
     ],
     shopCartData:[
       [
-        {shoper:"shea",did:11,rid:1,name:"warhsssdeqgsdgr官网如果风EGHFDQWgagha",src:"../../picture/colSelect.png",price:85.25,stock:852,color:"绿色",size:"L",isOnSale:"1",style:""},
+        {shoper:"shea",did:11,rid:1,name:"warhsssdeqgsdgr官网如果风EGHFDQWgagha",src:"../../picture/colSelect.png",price:85.25,stock:0,color:"绿色",size:"L",isOnSale:"1",style:""},
         {shoper:"shea",did:21,rid:2,name:"gay",src:"../../picture/colSelect.png",price:14.25,stock:352,color:"绿色",size:"L",isOnSale:"1",style:""}
       ],
       [
@@ -58,7 +60,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that =this;
+    wx.request({
+      url: this.data.service+ '/ShopCartController/getShopCartGoodsInfo/'+app.globalData.openId,
+      success(res)
+      {
+        console.log(res)
+        that.setData({
+          shopCartData : res.data
+        })
+        console.log(that.data.shopCartData)
+      }
+    })
   },
 
   /**
@@ -93,7 +106,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
+    wx.stopPullDownRefresh();
   },
 
   /**
