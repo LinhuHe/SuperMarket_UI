@@ -36,7 +36,7 @@ Page({
       wx.request({
         url: this.data.service+'GoodsRough/findGoodsRoughByTimeDesc',
         success(res) {
-          //console.log(res)
+          console.log(res)
           that.setData({
             goodsData:res.data
           })
@@ -76,7 +76,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
+    wx.stopPullDownRefresh();
   },
 
   /**
