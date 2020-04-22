@@ -5,7 +5,8 @@
     "pages/collection/collection",
     "pages/shopcart/shopcart",
     "pages/me/me",
-    "pages/goodsDetail/goodsDetail"
+    "pages/goodsDetail/goodsDetail",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -22,7 +22,7 @@ Page({
     //colors:["l","q","w","e"],
     styles:["样式",'无'], //基于color的style
     size:['la','ma'],  //基于cololr和style的size
-
+    attitude:0, //0 初始  1 加入购物车 2 购买
   },
 
   tapOnCollect(event) 
@@ -61,13 +61,73 @@ Page({
         }
       })
     }  
+   // this.onLoad()
   },
   bindMultiPickerChange(e)
   {
-    console.log('picker最终选择是 ： ', e.detail.value)
+    let that = this
+    var atti = this.data.attitude
+    console.log('picker最终选择是 ： ', e.detail.value, "  态度是:",atti)
     this.setData({
       pickerindex: e.detail.value
     })
+    if(e.detail.value[0]==0){
+      wx.showModal({
+        title: '提示',
+        content: '请选择颜色',
+      })
+    }
+    else if(e.detail.value[1]==0){
+      wx.showModal({
+        title: '提示',
+        content: '请选择样式',
+      })
+    }
+    else if(e.detail.value[2]==0){
+      wx.showModal({
+        title: '提示',
+        content: '请选择尺寸',
+      })
+    }
+    else{  // 正确选择
+      if(atti==1) //添加购物车
+      {wx.request({  //先得到did
+        url: this.data.service+'/GoodsDetailController/getDidByRidCSS',
+        data:{
+          rid : this.data.goodInfo.goodsRid,
+          color : this.data.pickercolumn[0][e.detail.value[0]],
+          style : this.data.pickercolumn[1][e.detail.value[1]],
+          size : this.data.pickercolumn[2][e.detail.value[2]],
+        },
+        success(res){
+          console.log("得到的did:",res.data)
+          wx.request({
+            url: that.data.service+'/ShopCartController/addIntoShopcart',
+            data:{
+              uid : app.globalData.openId,
+              did : res.data
+            },
+            success(res){
+              if(res.data==1)
+              {
+                wx.showModal({
+                  title: '提示',
+                  content: '商品加入购物车',
+                })
+              }
+              if(res.data==0)
+              {
+                wx.showModal({
+                  title: '提示',
+                  content: '添加失败',
+                })
+              }
+            }
+          })
+        }
+      })}
+    }
+
   },
   bindMultiPickerColumnChange(e)
   {
@@ -129,10 +189,16 @@ Page({
     //console.log(this.data.pickercolumn)
   },
   tapOnShopcart(event){
-
+    console.log("tapOnShopcart")
+    this.setData({
+      attitude : 1
+    })
   },
   tapOnBuy(event){
-
+    console.log("Buy")
+    this.setData({
+      attitude : 2
+    })
   },
 
 

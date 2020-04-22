@@ -4,14 +4,14 @@
 <view class='wholeShop'>
   <view class='shoper-name'>{{item[0].goodsShoper}}的商店
       <block wx:for="{{item}}">
-        <view class='singleGood' data-rid='{{item.goodsRid}}'>
-          <checkbox wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='isSelect' value="{{item.goodsPrice}}"></checkbox>
-          <checkbox wx:else class='isSelect' value="{{item.goodsPrice}}" disabled="{{true}}"></checkbox>
+        <view class='singleGood' >
+          <checkbox wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='isSelect' value="{{item.goodsPrice}},{{item.goodsDid}}" ></checkbox>
+          <checkbox wx:else class='isSelect' value="{{item.goodsPrice}}{{item.goodsDid}}" disabled="{{true}}"></checkbox>
           <view class='single-img-stock'>
             <image class='single-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" catchtap="tapOnGood"></image>
             <view class = 'single-stock'>库存:{{item.goodsStock}}</view>
           </view>
-          <view class='single-info' catchtap="tapOnGood">
+          <view class='single-info' catchtap="tapOnGood" data-rid='{{item.goodsRid}}'>
             <view class='single-name'>{{item.goodsName}}</view>
             <view class='single-color-size'>颜色:{{item.goodsColor}}  |   规格:{{item.goodsSize}}</view>
             <view wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='single-price'>￥{{item.goodsPrice}}</view>

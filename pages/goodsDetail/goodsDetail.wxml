@@ -40,7 +40,7 @@
   <picker class='goodpicker' mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{pickerindex}}" range="{{pickercolumn}}">
     <view class='button'>
       <view class='spc' bindtap="tapOnShopcart">加入购物车</view>
-      <view class='buy' bindtap="'tapOnBuy'">立即购买</view>
+      <view class='buy' bindtap="tapOnBuy">立即购买</view>
     </view>
   </picker>
 </view>

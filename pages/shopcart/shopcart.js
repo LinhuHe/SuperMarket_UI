@@ -27,21 +27,25 @@ Page({
         {shoper:"biroie",did:7,rid:71,name:"j75wsr",src:"../../picture/colSelect.png",price:214.25,stock:3554,color:"绿色",size:"L",isOnSale:"1",style:""}
       ]
     ],
-    totalPrice:0
+    totalPrice:0,
+    selectedGoods:[]
   },
 
-  selected(e)
+  selected(e)  //计算合计价格 合计商品did
   {
     var sum=0;
+    let dids = [];
     for(var i=0;i<e.detail.value.length;i++)
     {
-      sum+=Number(e.detail.value[i]);
+      sum+=Number(e.detail.value[i].split(",")[0]);
+      dids.push(e.detail.value[i].split(",")[1])
     }
     this.setData({
-      totalPrice:sum
+      totalPrice:sum,
+      selectedGoods:dids
     })
 
-    console.log("checked price is:"+e.detail.value+"\n"+"total is:"+this.data.totalPrice)
+    console.log("checked price is:"+e.detail.value+"\n"+"total is:"+this.data.totalPrice+"\n"+"所有did = ",this.data.selectedGoods)
   },
 
   tapOnGood(e)
@@ -53,7 +57,32 @@ Page({
   },
   removeShopcart(e)
   {
+    let that = this
     console.log("removeed did is:"+e.currentTarget.dataset.did)
+    wx.request({
+      url: this.data.service+'/ShopCartController/getShopCartGoodsInfo',
+      data:{
+        uid : app.globalData.openId,
+        did : e.currentTarget.dataset.did
+      },
+      success(res){
+        if(res.data==1){
+          wx.showModal({
+            title: '提示',
+            content: '商品已从购物车删除',
+          })
+        that.onLoad()
+        }
+        if(res.data==0)
+        {
+          wx.showModal({
+            title: '提示',
+            content: '商品不存在',
+          })
+        that.onLoad()
+        }
+      }
+    })
   },
 
   /**
