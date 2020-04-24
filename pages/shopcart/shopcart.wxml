@@ -8,7 +8,7 @@
           <checkbox wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='isSelect' value="{{item.goodsPrice}},{{item.goodsDid}}" ></checkbox>
           <checkbox wx:else class='isSelect' value="{{item.goodsPrice}}{{item.goodsDid}}" disabled="{{true}}"></checkbox>
           <view class='single-img-stock'>
-            <image class='single-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" catchtap="tapOnGood"></image>
+            <image class='single-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" catchtap="tapOnGood"  data-rid='{{item.goodsRid}}'></image>
             <view class = 'single-stock'>库存:{{item.goodsStock}}</view>
           </view>
           <view class='single-info' catchtap="tapOnGood" data-rid='{{item.goodsRid}}'>
@@ -37,5 +37,5 @@
     <view class='price'>￥{{totalPrice}}</view>
   </view>
   
-  <view class='buynow'><view class="offset">购买</view></view>
+  <view class='buynow' bindtap="tapOnBuy" data-dids="{{selectedGoods}}"><view class="offset">购买</view></view>
 </view>

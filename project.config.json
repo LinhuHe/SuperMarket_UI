@@ -103,6 +103,13 @@
 					"id": -1,
 					"name": "购买页面",
 					"pathName": "pages/order/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "orderList",
+					"pathName": "pages/orderList/orderList",
 					"scene": null
 				}
 			]

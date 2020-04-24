@@ -1,0 +1,20 @@
+<!--pages/orderList/orderList.wxml-->
+<view class='wholeOrder'>
+  <block wx:for="{{orderListInfo}}">
+    <view class = 'singleOrder'>
+      <block wx:for="{{item}}">
+        <view class='singleGood' bindtap="tapOnItem" data-rid="{{item.goodsRid}}">
+          <image class='order-img' src='{{item.goodsProtrait}}'></image>
+          <view class='singleInfo'>
+            <view class='single-name'>{{item.goodName}}</view>
+            <view class='single-price'>￥{{item.orderPrice}}</view>
+            <view>{{item.orderDestination[0]}}</view>
+            <view>{{item.orderDestination[1]}}</view> 
+            <view>{{item.orderDestination[2]}}</view>
+          </view>
+        </view>
+        <view class='line'></view>
+      </block>
+    </view>
+  </block>
+</view>

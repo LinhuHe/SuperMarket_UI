@@ -91,7 +91,9 @@ Page({
     }
     else{  // 正确选择
       if(atti==1) //添加购物车
-      {wx.request({  //先得到did
+      {
+        this.setData({attitude:0}) //重置
+        wx.request({  //先得到did
         url: this.data.service+'/GoodsDetailController/getDidByRidCSS',
         data:{
           rid : this.data.goodInfo.goodsRid,
@@ -100,7 +102,7 @@ Page({
           size : this.data.pickercolumn[2][e.detail.value[2]],
         },
         success(res){
-          console.log("得到的did:",res.data)
+          console.log("加入购物车得到的did:",res.data)
           wx.request({
             url: that.data.service+'/ShopCartController/addIntoShopcart',
             data:{
@@ -125,7 +127,28 @@ Page({
             }
           })
         }
-      })}
+        })
+      }
+      else if(atti==2)
+      {
+        this.setData({attitude:0})
+        wx.request({
+          url: this.data.service+'/GoodsDetailController/getDidByRidCSS',
+          data:{
+            rid : this.data.goodInfo.goodsRid,
+            color : this.data.pickercolumn[0][e.detail.value[0]],
+            style : this.data.pickercolumn[1][e.detail.value[1]],
+            size : this.data.pickercolumn[2][e.detail.value[2]],
+          },
+          success(res){
+            console.log("加入购物车得到的did:",res.data)
+            wx.navigateTo({
+            url: '../order/order?dids='+res.data
+          })
+          }
+        })
+        
+      }
     }
 
   },
@@ -219,7 +242,7 @@ Page({
           goodInfo: res.data,
           moreImg: res.data.goodsMoreimg
         })
-        console.log(that.data.goodInfo)
+        console.log("goodInfo:",that.data.goodInfo)
         //console.log(that.data.moreImg)
 
         if(that.data.moreImg!=null) //解析moreImg项

@@ -1,11 +1,16 @@
 // pages/order/order.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address : "",
+    service : app.globalData.Service,
+    Rname:"",
+    Rphone:'',
+    Rdaddr:'',  //详细地址
+    address : "",  //地区
     region: ['重庆市', '重庆市', '沙坪坝区'],
     customItem : '全部',
     orderData:[
@@ -33,28 +38,115 @@ Page({
       address:zone
     })
   },
+  inputName(e)
+  {
+    console.log('name',e.detail.value)
+    this.setData({
+      Rname : e.detail.value
+    })
+  },
+  inputPhone(e)
+  {
+    console.log('phone',e.detail.value)
+    this.setData({
+      Rphone : e.detail.value
+    })
+  },
+  inputDAddr(e)
+  {
+    console.log('detailAddress',this.data.address+','+e.detail.value)
+    this.setData({
+      Rdaddr : this.data.address+','+e.detail.value
+    })
+  },
+  confirmToBuy()
+  {
+    let that = this
+    if(this.data.Rname=='' || this.data.Rphone=='' || this.data.address=='' || this.data.Rdaddr==''){
+      wx.showModal({
+        title: '提示',
+        content: '清先完整收件人信息',
+      })
+    }
+    else{
+    wx.request({
+      url: this.data.service+'/OrderController/createOrder',
+      data:{
+        dids:this.data.goodDids,
+        uid :app.globalData.openId,
+        destination : this.data.Rname+ '/' +  this.data.Rphone + '/'+this.data.Rdaddr
+      },
+      success(res){
+        if(res.data==1){
+          wx.showModal({
+            title: '提示',
+            content: '购买成功',
+            success(res){
+              if(res.cancel){
+                // 用户点击了取消
+                wx.switchTab({
+                  url: '../home/home'
+                })
+              }else if(res.confirm){
+                // 用户点击了确定
+                wx.switchTab({
+                  url: '../home/home'
+                })
+              }
+            }
+          })
+        }
+        else{
+          wx.showModal({
+            title: '提示',
+            content: '存在失效商品，请检查后重试',
+          })
+        that.onReady()
+        }
+      }
+    })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    //console.log("购物车跳转订单",options)
+    this.setData({
+      goodDids : options.dids
+    })
+    console.log("订单中dids",this.data.goodDids)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var data = this.data.orderData
+    let that = this
     var sum=0;
-    for(let i=0;i<data.length;i++)
-    {
-      for(let j=0;j<data[i].length;j++)
-      {
-        sum += Number(data[i][j].goodsPrice)
+    wx.request({
+      url: this.data.service+'/OrderController/getOrderGoodsInfoByDids',
+      data:{
+        dids:this.data.goodDids
+      },
+      success(res){
+        that.setData({
+          orderData : res.data
+        })
+        console.log("请求成功后 orderData：",that.data.orderData)
+        var data = that.data.orderData //及时更新数据 不然读不到
+        for(let i=0;i<data.length;i++)
+        {
+          for(let j=0;j<data[i].length;j++)
+          {
+            sum += Number(data[i][j].goodsPrice)
+          }
+        }
+        that.setData({
+          totalPrice:sum
+        })
       }
-    }
-    this.setData({
-      totalPrice:sum
     })
   },
 
@@ -84,7 +176,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onReady()
+    wx.stopPullDownRefresh();
   },
 
   /**

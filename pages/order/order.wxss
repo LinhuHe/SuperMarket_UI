@@ -72,6 +72,13 @@
   font-size:  40rpx;
   color:gray;
 }
+.single-nostock
+{
+  font-size:  40rpx;
+  color:orangered;
+  text-decoration:line-through;
+}
+
 
 .single-info
 {
@@ -107,6 +114,23 @@
 .single-price
 {
   color: orangered;
+}
+
+.single-status
+{
+  height: 50rpx;
+  width: 100rpx;
+  background-color: gray;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.single-status .single-font
+{
+  color: white;
+  font-size: 40rpx;
+  position: relative;
+  padding-bottom: 3rpx;
 }
 
 .bottomBar

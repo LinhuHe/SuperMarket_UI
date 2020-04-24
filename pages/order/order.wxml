@@ -1,15 +1,11 @@
 <!--pages/order/order.wxml-->
 <view class = 'baseInfo'>
-  <input class='input' placeholder="收件人"></input>
-  <view class='line'></view>
-  <input class='input' placeholder="联系电话"></input>
-  <view class='line'></view>
+  <input class='input' placeholder="收件人" bindinput="inputName"></input>
+  <input class='input' placeholder="联系电话" bindinput="inputPhone"></input>
   <picker mode = "region" value = '{{region}}' bindchange='selectRegion' custom-item="{{customItem}}" class='regionPicker'>
   选择地区：{{address}}
   </picker>
-  <view class='line'></view>
-  <input class='input' placeholder="详细地址"></input>
-  <view class='line'></view>
+  <input class='input' placeholder="详细地址" bindinput="inputDAddr"></input>
 </view>
 
 <block wx:for="{{orderData}}">
@@ -18,13 +14,17 @@
       <block wx:for="{{item}}">
         <view class='singleGood' >
             <view class='single-img-stock'>
-            <image class='single-img' src="{{item.goodsProtrait}}" ></image>
-            <view class = 'single-stock'>库存:{{item.goodsStock}}</view>
+            <image class='single-img' src="{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}" ></image>
+            <view wx:if='{{item.goodsStock>0}}' class = 'single-stock'>库存:{{item.goodsStock}}</view>
+            <view wx:else class = 'single-nostock'>库存:{{item.goodsStock}}</view>
             </view>
           <view class='single-info'>
             <view class='single-name'>{{item.goodsName}}</view>
             <view class='single-color-size'>颜色:{{item.goodsColor}}  |   规格:{{item.goodsSize}}</view>
             <view class='single-price'>￥{{item.goodsPrice}}</view>
+            <view wx:if='{{item.isOnSale!=1}}' class='single-status'>
+              <view class='single-font'>下架</view>
+            </view>
           </view>
         </view>
         <view class='line'></view>
@@ -36,5 +36,5 @@
 <view class='bottomBar'>
   <view class='heji'>合计:</view>
   <view class = 'price'>￥{{totalPrice}}</view>
-  <view class = 'confirm'><view class="offset">确认购买</view></view>
+  <view class = 'confirm' bindtap="confirmToBuy"><view class="offset">确认购买</view></view>
 </view>

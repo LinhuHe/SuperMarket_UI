@@ -84,6 +84,12 @@ Page({
       }
     })
   },
+  tapOnBuy(event)
+  {
+    wx.navigateTo({
+      url: '../order/order?dids='+event.currentTarget.dataset.dids
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
