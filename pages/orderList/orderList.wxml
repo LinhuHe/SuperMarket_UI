@@ -4,17 +4,26 @@
     <view class = 'singleOrder'>
       <block wx:for="{{item}}">
         <view class='singleGood' bindtap="tapOnItem" data-rid="{{item.goodsRid}}">
-          <image class='order-img' src='{{item.goodsProtrait}}'></image>
+          <view class='single-left'>
+            <image class='order-img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
+            <view class='goods-status-position'>状态：
+              <text wx:if='{{item.orderStatus==0}}' class= 'goods-status-position-wait'>待发货</text>
+              <text wx:elif='{{item.orderStatus==1}}' class= 'goods-status-position-send'>待收货</text>
+              <text wx:elif='{{item.orderStatus==2}}' class= 'goods-status-position-recived'>已收货</text>
+              <text wx:elif='{{item.orderStatus==3}}' class= 'goods-status-position-back'>退货中</text>
+            </view>
+          </view>
           <view class='singleInfo'>
-            <view class='single-name'>{{item.goodName}}</view>
+            <view class='single-name'>{{item.goodsName}}</view>
             <view class='single-price'>￥{{item.orderPrice}}</view>
-            <view>{{item.orderDestination[0]}}</view>
-            <view>{{item.orderDestination[1]}}</view> 
-            <view>{{item.orderDestination[2]}}</view>
+            <view class = 'rname'>{{item.desInfo[0]}}</view>
+            <view class = 'rphone'>{{item.desInfo[1]}}</view> 
+            <view class = 'rdaddr'>{{item.desInfo[2]}}</view>
           </view>
         </view>
         <view class='line'></view>
       </block>
+      <view class='order-date'>下单日期：{{item[0].date_str}}</view>
     </view>
   </block>
 </view>

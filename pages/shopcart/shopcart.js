@@ -89,6 +89,22 @@ Page({
     wx.navigateTo({
       url: '../order/order?dids='+event.currentTarget.dataset.dids
     })
+    
+  },
+  removeShopcartAfterBuy()
+  {
+    for(var i=0;i<this.data.selectedGoods.length;i++)
+    {
+      let that = this
+      wx.request({
+        url: this.data.service+'/ShopCartController/getShopCartGoodsInfo',
+        data:{
+          uid : app.globalData.openId,
+          did : this.data.selectedGoods[i]
+        },
+      })
+    }
+    
   },
 
   /**

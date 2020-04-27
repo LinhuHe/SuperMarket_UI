@@ -7,7 +7,8 @@
     "pages/me/me",
     "pages/goodsDetail/goodsDetail",
     "pages/order/order",
-    "pages/orderList/orderList"
+    "pages/orderList/orderList",
+    "pages/orderListSingleStatus/orderListSingleStatus"
   ],
   "window": {
     "backgroundTextStyle": "dark",

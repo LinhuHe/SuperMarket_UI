@@ -22,19 +22,19 @@
 <view class='view-middle'> <!--中间部分 查看订单相关-->
   <view class='orderlist'>
     <text>全部订单</text>
-    <text class='check-orderlist'>查看全部订单</text>
+    <text class='check-orderlist' bindtap="checkAllorder">查看全部订单</text>
     <image class='into-orderlist' src='../../picture/youJianKuoHao.png'></image>
   </view>
-
   <view class='light-line'></view>
-<view class='orderstatus'>
-    <block wx:for='{{orderstatusData}}'>
-    <view class = 'single-status'>
-      <image class='status-img' src='{{item.imgUrl}}'></image>
-      <view>{{item.name}}</view>
-    </view> 
-    </block>
-</view>
+
+  <view class='orderstatus'>
+      <block wx:for='{{orderstatusData}}'>
+      <view class = 'single-status'>
+        <image class='status-img' src='{{item.imgUrl}}' bindtap="tapOnSingleStatus" data-jumpid='{{item.jumpid}}'></image>
+        <view bindtap="tapOnSingleStatus" data-jumpid='{{item.jumpid}}'>{{item.name}}</view>
+      </view> 
+      </block>
+  </view>
   <view class='light-line'></view>
 </view>
 
@@ -46,6 +46,8 @@
   </view> 
 
 </view>
+
+<view>{{upperItemData[0].num}}</view>
 
 
 

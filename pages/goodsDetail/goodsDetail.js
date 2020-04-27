@@ -23,6 +23,7 @@ Page({
     styles:["样式",'无'], //基于color的style
     size:['la','ma'],  //基于cololr和style的size
     attitude:0, //0 初始  1 加入购物车 2 购买
+    selectedGoods:[], //兼容的变量
   },
 
   tapOnCollect(event) 
@@ -223,6 +224,9 @@ Page({
       attitude : 2
     })
   },
+  removeShopcartAfterBuy(){
+    //为了兼容的空函数
+  },
 
 
   /**
@@ -325,7 +329,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
+    wx.stopPullDownRefresh();
   },
 
   /**

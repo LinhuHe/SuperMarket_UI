@@ -1,4 +1,4 @@
-/* pages/orderList/orderList.wxss */
+/* pages/orderListSingleStatus/orderListSingleStatus.wxss */
 .wholeOrder
 {
   display: flex;

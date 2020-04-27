@@ -78,6 +78,13 @@ Page({
       },
       success(res){
         if(res.data==1){
+          
+          let pages = getCurrentPages();
+          let prevPage = pages[pages.length - 2]
+          //调用前一个页面的方法
+          console.log("在order页面看spc的selectedgoods",prevPage.data.selectedGoods)
+          prevPage.removeShopcartAfterBuy();
+
           wx.showModal({
             title: '提示',
             content: '购买成功',

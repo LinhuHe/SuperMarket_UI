@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    service:app.globalData.Service,
     userInfo:'',
     upperItemData:[  //进入该页面时请求数据
       {name:"我收藏的",imgUrl:'../../picture/colUnselect.png',num:-1,jumpid:1},
@@ -14,10 +15,10 @@ Page({
       {name:"卡包",imgUrl:'../../picture/kaBao.png',num:-1,jumpid:3}
     ],
     orderstatusData:[
-      {name:"待发货",imgUrl:'../../picture/weiFaHuo.png',jumpid:1},
-      {name:"待收货",imgUrl:'../../picture/daiShouHuo.png',jumpid:2},
-      {name:"已收货",imgUrl:'../../picture/yiShouHuo.png',jumpid:3},
-      {name:"退货中",imgUrl:'../../picture/tuiHuo.png',jumpid:4},
+      {name:"待发货",imgUrl:'../../picture/weiFaHuo.png',jumpid:0},
+      {name:"待收货",imgUrl:'../../picture/daiShouHuo.png',jumpid:1},
+      {name:"已收货",imgUrl:'../../picture/yiShouHuo.png',jumpid:2},
+      {name:"退货中",imgUrl:'../../picture/tuiHuo.png',jumpid:3},
     ]
   },
 
@@ -38,10 +39,49 @@ Page({
     
   },
 
+  checkAllorder()
+  {
+    wx.navigateTo({
+      url: '../orderList/orderList'
+    })
+  },
+
+  tapOnSingleStatus(e)
+  {
+    //console.log(e)
+    wx.navigateTo({
+      url: '../orderListSingleStatus/orderListSingleStatus?status='+e.currentTarget.dataset.jumpid
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    this.setData({
+      userInfo:app.globalData.userInfo
+     })
+    var temdata = {
+      upperItemData : this.data.upperItemData
+    }
+    wx.request({ //收藏数
+      url: this.data.service+'/CollectionController/countMyCollectionNums/'+app.globalData.openId,
+      success(res)
+      {
+        temdata.upperItemData[0].num = res.data
+        that.setData(temdata)
+      }
+    })
+    wx.request({ //购物车数
+      url: this.data.service+'/ShopCartController/countMyShopcartNums/'+app.globalData.openId,
+      success(res)
+      {
+        temdata.upperItemData[1].num = res.data
+        that.setData(temdata)
+      }
+    })
+    console.log(this.data.upperItemData)
   },
 
   /**
@@ -54,9 +94,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-     userInfo:app.globalData.userInfo
-    })
     //console.log(this.data.userInfo)
   },
 
@@ -78,7 +115,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onLoad()
+    wx.stopPullDownRefresh();
   },
 
   /**
