@@ -17,6 +17,13 @@ Page({
       ]
     ],
   },
+  GoToGood(e)
+  {
+    console.log(e.currentTarget.dataset.rid)
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?rid='+e.currentTarget.dataset.rid
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

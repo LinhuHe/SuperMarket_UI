@@ -1,14 +1,12 @@
 <!--pages/me/me.wxml-->
 <view class="view-upper"> <!--上半部分，用户信息和下面的一列图标-->
- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" ></image>
+ <image class="userinfo-avatar" src="{{userInfo.userPortrait}}" ></image>
   
   <view class = 'userinfo-nickname'>
-    <text>{{userInfo.nickName}}</text>
+    {{userInfo.userNickname}}
   </view>
-  
 
   <view class='upperItem'>
-  
     <block wx:for="{{upperItemData}}">
       <view class='upperItem-view'>
         <text>{{item.num}}</text>
@@ -40,14 +38,12 @@
 
 <view class='bottom'> <!--底层 商家相关-->
 
-  <view class='shoperlist'>
+  <view class='shoperlist' bindtap="tapOnIamShoper">
     <image class='shoper-img' src='../../picture/ImShoper.png'></image>
     <text>我是商家</text>
   </view> 
 
 </view>
-
-<view>{{upperItemData[0].num}}</view>
 
 
 

@@ -2,8 +2,9 @@
 <view class='wholeOrder'>
   <block wx:for="{{orderListInfo}}">
     <view class = 'singleOrder'>
+    <view class = 'orderkey'>订单钥:{{item[0].orderKey}}</view>
       <block wx:for="{{item}}">
-        <view class='singleGood' bindtap="tapOnItem" data-rid="{{item.goodsRid}}">
+        <view class='singleGood' bindtap="GoToGood" data-rid="{{item.orderRid}}">
           <view class='single-left'>
             <image class='order-img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
             <view class='goods-status-position'>状态：

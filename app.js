@@ -21,7 +21,9 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              
+
+             
+
               //console.log("app.js/wx.getSetting↓")
               //console.log(this.globalData.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -50,7 +52,6 @@ App({
            this.globalData.openId=res.data.openid
           //console.log("用户的openid:"+this.globalData.openId)
           }
-
         });
       }
     });
@@ -59,6 +60,7 @@ App({
   globalData: {
     userInfo: null,
     openId:"",
-    Service:"http://30bm574434.zicp.vip/"
+    Service:"http://30bm574434.zicp.vip/",
+    userinfo_service:''
   }
 })

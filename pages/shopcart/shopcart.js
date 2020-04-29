@@ -104,6 +104,10 @@ Page({
         },
       })
     }
+    this.setData({  //初始化
+      totalPrice:0,
+      selectedGoods:[]
+    })
     
   },
 
@@ -136,7 +140,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad()
   },
 
   /**

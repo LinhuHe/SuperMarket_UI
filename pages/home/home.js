@@ -33,6 +33,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    
       wx.request({
         url: this.data.service+'GoodsRough/findGoodsRoughByTimeDesc',
         success(res) {

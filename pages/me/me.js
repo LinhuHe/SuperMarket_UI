@@ -12,7 +12,7 @@ Page({
     upperItemData:[  //进入该页面时请求数据
       {name:"我收藏的",imgUrl:'../../picture/colUnselect.png',num:-1,jumpid:1},
       {name:"去购物车",imgUrl:'../../picture/spcUnselect.png',num:-1,jumpid:2},
-      {name:"卡包",imgUrl:'../../picture/kaBao.png',num:-1,jumpid:3}
+      //{name:"卡包",imgUrl:'../../picture/kaBao.png',num:-1,jumpid:3}
     ],
     orderstatusData:[
       {name:"待发货",imgUrl:'../../picture/weiFaHuo.png',jumpid:0},
@@ -53,15 +53,58 @@ Page({
       url: '../orderListSingleStatus/orderListSingleStatus?status='+e.currentTarget.dataset.jumpid
     })
   },
+  tapOnIamShoper()
+  {
+    if(this.data.userInfo.isShoper == 0) //还不是
+    {
+      wx.showModal({
+        title: '提示',
+        content: '您还不是商户，是否开通商户功能',
+        success(res){
+          if(res.cancel){
+            // 用户点击了取消
+           
+          }else if(res.confirm){
+            // 用户点击了确定
+            //跳到商家界面
+          }
+        }
+      })
+    }
+    else if(this.data.userInfo.isShoper == 1)
+    {
+
+    }
+    else{
+      //错误
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     let that = this
-    this.setData({
-      userInfo:app.globalData.userInfo
-     })
+    //console.log(app.globalData.openId+"\n",app.globalData.userInfo.nickname,'\n',app.globalData.userInfo)
+    wx.request({
+      url: this.data.service+'/UserInfoController/checkAndAddMyInfo',
+      data:{
+        uid : app.globalData.openId,
+        nickname : app.globalData.userInfo.nickName,
+        sex  :app.globalData.userInfo.gender,
+        ip: "null NOW",
+        portrait : app.globalData.userInfo.avatarUrl
+      },
+      success(res)
+      {
+        that.setData({
+          userInfo:res.data
+         })
+         console.log("me界面userinfo：",that.data.userInfo)
+      }
+    })
+    
+
     var temdata = {
       upperItemData : this.data.upperItemData
     }
@@ -81,7 +124,7 @@ Page({
         that.setData(temdata)
       }
     })
-    console.log(this.data.upperItemData)
+    //console.log(this.data.upperItemData)
   },
 
   /**

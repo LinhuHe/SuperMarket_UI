@@ -233,11 +233,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) { /*接收home来的参数 rid*/ 
-    this.setData({
+    if(options) //免得刷新报错
+    
+    {
+      this.setData({
       rid:options.rid
     })
+    }
     console.log("this.data.rid="+this.data.rid)
-
+    
     let that = this;
     wx.request({
       url: this.data.service+'GoodsRough/findGoodShowInfoByRid/'+this.data.rid,

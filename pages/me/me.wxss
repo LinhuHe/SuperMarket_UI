@@ -19,11 +19,10 @@
 }
 
 .userinfo-nickname{
-  width: 170rpx;
+  height: 50rpx;
   font-size: 40rpx;
   text-align: center;
-  position: relative;
-  top: 50rpx;
+  margin-top: 50rpx;
 }
 
 .upperItem{
@@ -36,7 +35,7 @@
 {
   position: relative;
   display: flex;
-  width: 33.33%;
+  width: 50%;
   flex-direction: column;
   font-size: 30rpx;
   color: #8B8989;
@@ -145,6 +144,12 @@
   border-radius: 10rpx;
   font-size: 40rpx;
   background-color: lightgray;
+}
+
+.flex-column
+{
+display: flex;
+flex-direction: column;
 }
 
 .light-line

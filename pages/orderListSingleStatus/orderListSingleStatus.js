@@ -14,6 +14,13 @@ Page({
         {orderDid:5,goodName:"weffsdgf4235BN2RdaVas",goodsShoper:'qwd',goodsProtrait:"../../picture/colUnselect.png",goodsRid:"1",orderPrice:74,orderStatus:0,orderDate:"2019/5/5",desInfo:["jlj ","15885695598","重庆市,重庆市,沙坪坝区,重庆大学"]}
     ],
   },
+  GoToGood(e)
+  {
+    console.log(e.currentTarget.dataset.rid)
+    wx.navigateTo({
+      url: '../goodsDetail/goodsDetail?rid='+e.currentTarget.dataset.rid
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
