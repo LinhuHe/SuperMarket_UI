@@ -1,0 +1,130 @@
+/* pages/setUp/setUp.wxss */
+.single-setup-portrait
+{
+  height: 200rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx gray solid;
+}
+
+.portrait-text
+{
+ position: relative;
+ left: 10rpx;
+ margin-top: 80rpx;
+}
+
+.portrait-img
+{
+  height: 180rpx;
+  width: 180rpx;
+
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  border-radius: 10rpx;
+}
+
+.youjiankouhao-portrait
+{
+  height: 80rpx;
+  width: 80rpx;
+  position: relative;
+  top: 70rpx;
+}
+
+.single-setup-nickname
+{
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx gray solid;
+}
+
+.nickname-text
+{
+ position: relative;
+ left: 10rpx;
+ margin-bottom: 20rpx;
+}
+
+.nickname{
+  color: gray;
+}
+
+.youjiankouhao-nickname
+{
+  height: 40rpx;
+  width: 40rpx;
+  position: relative;
+  top: 5rpx;
+}
+
+.single-setup-key
+{
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx darkgray solid;
+}
+ 
+.key-text
+{
+ position: relative;
+ left: 10rpx;
+ margin-bottom: 20rpx;
+}
+
+.key{
+  color: lightgray;
+  font-style: italic;
+  font-size: 35rpx;
+}
+
+.single-setup-shop
+{
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx darkgray solid;
+}
+ 
+.shop-text
+{
+ position: relative;
+ left: 10rpx;
+ margin-bottom: 20rpx;
+}
+
+.is-shoper{
+  color: green;
+  font-style: italic;
+  font-size: 35rpx;
+}
+.no-shoper{
+  color: orangered;
+  font-style: italic;
+  font-size: 35rpx;
+}
+
+.setup-info
+{
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  right: 20rpx;
+}
+
+
+

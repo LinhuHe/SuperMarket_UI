@@ -157,7 +157,7 @@ Page({
   {
     let that = this;
     console.log('修改的列为', e.detail.column, '，这一列值为', e.detail.value);
-    console.log('this.data.pickerindex: ',this.data.pickerindex)//打印的时候会显示上一次的值，因为setData在下面
+    //console.log('this.data.pickerindex: ',this.data.pickerindex)//打印的时候会显示上一次的值，因为setData在下面
     var data={
       pickercolumn: this.data.pickercolumn,
       pickerindex: this.data.pickerindex
@@ -186,6 +186,7 @@ Page({
       })
       data.pickerindex[1] = 0;
       data.pickerindex[2] = 0;  //重置位置 免得误操作
+      that.setData(data)
     }
     else if(e.detail.column==1) //style列
     {
@@ -202,15 +203,17 @@ Page({
             size:res.data
           })
           data.pickercolumn[2] = that.data.size //需放在success中 不然出去了style是之前的值
-          console.log(data.pickercolumn[2])
+          console.log("当前尺寸有",data.pickercolumn[2])
           that.setData(data)  //需要原地更新， 毕竟picker显示的是this.data中的数据
+          
         }
       })
       data.pickerindex[2] = 0;
+      that.setData(data)
     }
     //console.log(data)
     this.setData(data)
-    //console.log(this.data.pickercolumn)
+    console.log("change完了数据",this.data.pickercolumn,this.data.pickerindex)
   },
   tapOnShopcart(event){
     console.log("tapOnShopcart")
@@ -234,7 +237,6 @@ Page({
    */
   onLoad: function (options) { /*接收home来的参数 rid*/ 
     if(options) //免得刷新报错
-    
     {
       this.setData({
       rid:options.rid

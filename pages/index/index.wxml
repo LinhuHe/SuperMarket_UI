@@ -1,24 +1,17 @@
-<!--index.wxml-->
-
-<view wx:for="{{player}}">{{item.name}}</view>
-<button size="mini" bindtap="tapOnButton">+</button>
-<view>{{counter}}</view>
-
-<checkbox checked="{{false}}">aaaaa</checkbox>
-
-<view class="line"></view>
-
-<view class='in'>
-<view bindtap="tapToShow">
-1111
+<view wx:if="{{isHide}}">
+    <view wx:if="{{canIUse}}" >
+        <view class='header'>
+            <image src='../../picture/login.png'></image>
+        </view>
+ 
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+ 
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+            授权登录
+        </button>
+    </view>
+    <view wx:else>请升级微信版本</view>
 </view>
-</view>
-
-<picker mode="multiSelector" value="{{pickerindex}}" range="{{pickercolum}}" class = 'picker' bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange">
-  <view>{{pickercolum[0][pickerindex[1]]}} {{pickercolum[1][pickerindex[1]]}} {{pickercolum[2][pickerindex[2]]}}</view>
-</picker>
-
-<picker value="{{indexx}}" range="{{arrays}}">
-  <view>{{arrays[indexx]}}</view>
-  <image src="http://yanxuan.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/pickerArrow-a8b918f05f.png"></image>
-</picker>

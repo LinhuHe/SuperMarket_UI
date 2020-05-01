@@ -1,0 +1,86 @@
+/* pages/setUpNickname/setUpNickname.wxss */
+.setup-info
+{
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  right: 20rpx;
+}
+
+.single-setup-nickname
+{
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx gray solid;
+}
+
+.nickname-text
+{
+ position: relative;
+ left: 10rpx;
+ margin-bottom: 20rpx;
+}
+
+.nickname{
+  color: black;
+}
+
+.operation
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.cancle
+{
+  width: 40%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 20rpx;
+  margin-right: 10%;
+
+  background-color: gray;
+  border-radius: 10rpx;
+
+  font-size: 40rpx;
+  
+  justify-content: center;
+}
+.cancle-text
+{
+  color:white;
+  margin-top: 10rpx;
+}
+.confirm
+{
+  width: 40%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 20rpx;
+  background-color: tomato;
+  border-radius: 10rpx;
+
+  font-size: 40rpx;
+  
+  justify-content: center;
+}
+.confirm-text
+{
+  color:white;
+  margin-top: 10rpx;
+}
+
+.status-wrong
+{
+  font-size: 30rpx;
+  color: orangered;
+}
+

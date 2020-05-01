@@ -1,0 +1,38 @@
+<!--pages/shoperHome/shoperHome.wxml-->
+<view class='baseInfo'>
+  <image class = 'shoper-img' src='{{shoperInfo.userPortrait}}'></image>
+  <view class = 'shoper-info'>
+    <view class = 'shoper-name'>
+    商店名称:
+      <view class = 'shoper-name-detail'>{{shoperInfo.userNickname}}</view>
+    </view>
+    <view class = "today-gain">
+    今日营收:
+      <view class='money'>￥{{gain_day}}</view>
+    </view>
+    <view class = "all-gain">
+    总营收:
+      <view class='money'>￥{{gain_all}}</view>
+    </view>
+  </view>  
+</view>
+
+<view class = 'shoper-operation'>
+  <block wx:for="{{shoperOperation}}">
+    <view class='singleOperation'>
+      <view  class='operation-name'>{{item.nums}}</view>
+      <image class='operation-img' src="{{item.src}}"></image>
+      <view  class='operation-nums'>{{item.name}}</view>
+    </view>
+  </block>
+
+  <view class='toCenter'>
+    <view class='setup' bindtap="tapOnSetUp">
+      <view class='setup-text'>设置</view>
+    </view>
+
+    <view class='deleteShop'>
+      <view class='deleteShop-text'>注销店铺</view>
+    </view>
+  </view>
+</view>

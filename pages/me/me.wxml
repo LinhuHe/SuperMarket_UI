@@ -37,12 +37,14 @@
 </view>
 
 <view class='bottom'> <!--底层 商家相关-->
-
-  <view class='shoperlist' bindtap="tapOnIamShoper">
+  <view class='setup' bindtap="tapOnSetUp"> 
+    <image class='shoper-img' src='../../picture/SetUp.png'></image>
+    <view class='shoper-text'>设置</view>
+  </view>
+  <view class='imshoper' bindtap="tapOnIamShoper">
     <image class='shoper-img' src='../../picture/ImShoper.png'></image>
-    <text>我是商家</text>
+    <view class='shoper-text'>我是商家</view>
   </view> 
-
 </view>
 
 

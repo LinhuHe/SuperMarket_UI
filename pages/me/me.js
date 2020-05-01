@@ -8,7 +8,7 @@ Page({
    */
   data: {
     service:app.globalData.Service,
-    userInfo:'',
+    userInfo:'',  //这是来自服务器的userInfo
     upperItemData:[  //进入该页面时请求数据
       {name:"我收藏的",imgUrl:'../../picture/colUnselect.png',num:-1,jumpid:1},
       {name:"去购物车",imgUrl:'../../picture/spcUnselect.png',num:-1,jumpid:2},
@@ -55,6 +55,7 @@ Page({
   },
   tapOnIamShoper()
   {
+    let that = this
     if(this.data.userInfo.isShoper == 0) //还不是
     {
       wx.showModal({
@@ -67,17 +68,28 @@ Page({
           }else if(res.confirm){
             // 用户点击了确定
             //跳到商家界面
+            wx.navigateTo({
+              url: '../shoperHome/shoperHome?shoperInfo='+JSON.stringify(that.data.userInfo)  //JSON string化
+            })
           }
         }
       })
     }
     else if(this.data.userInfo.isShoper == 1)
     {
-
+      wx.navigateTo({
+        url: '../shoperHome/shoperHome?shoperInfo='+JSON.stringify(that.data.userInfo)
+      })
     }
     else{
       //错误
     }
+  },
+  tapOnSetUp()
+  {
+    wx.navigateTo({
+      url: '../setUp/setUp?userInfo='+JSON.stringify(this.data.userInfo)
+    })
   },
 
   /**
@@ -86,6 +98,7 @@ Page({
   onLoad: function (options) {
     let that = this
     //console.log(app.globalData.openId+"\n",app.globalData.userInfo.nickname,'\n',app.globalData.userInfo)
+    console.log("传入的userInfo",app.globalData.userInfo)
     wx.request({
       url: this.data.service+'/UserInfoController/checkAndAddMyInfo',
       data:{

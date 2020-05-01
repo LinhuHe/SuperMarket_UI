@@ -21,11 +21,8 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
-             
-
               //console.log("app.js/wx.getSetting↓")
-              //console.log(this.globalData.userInfo)
+              console.log("用户的userInfo",this.globalData.userInfo)
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -50,7 +47,7 @@ App({
                      // 获取到用户的 openid
           //console.log("用户的openid:" + res.data.openid);
            this.globalData.openId=res.data.openid
-          //console.log("用户的openid:"+this.globalData.openId)
+          console.log("用户的openid:"+this.globalData.openId)
           }
         });
       }

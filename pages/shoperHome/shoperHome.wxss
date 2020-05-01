@@ -1,0 +1,152 @@
+/* pages/shoperHome/shoperHome.wxss */
+
+.baseInfo
+{
+  height: 400rpx;
+  width: 100%;
+  background-color: #FFFAF0;
+  display: flex;
+  flex-direction: row;
+  border-top:5rpx #E6E6FA solid ;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+
+  align-items: center;
+}
+
+.shoper-img
+{
+  height: 300rpx;
+  width: 40%;
+  border-radius: 50%;
+}
+
+.shoper-info
+{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  align-items: center;
+}
+
+.shoper-name
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shoper-name-detail
+{
+  white-space: nowrap;  /*不换行*/
+  overflow:hidden; /*超出一行文字自动隐藏 也有其他值*/
+  text-overflow:ellipsis /*文字隐藏后添加省略号*/
+}
+
+.today-gain{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  align-items: center;
+}
+
+.all-gain{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  align-items: center;
+}
+
+.shoper-operation
+{
+  height: 500rpx;
+  width: 100%;
+  background-color: #FFFAF0;
+  display: flex;
+  flex-direction: row;
+
+  border-top:5rpx #E6E6FA solid ;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+ 
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.singleOperation
+{
+  display: flex;
+  flex-direction: column;
+  width: 33.33%;
+  align-items: center;
+  
+}
+
+.operation-name
+{
+
+}
+.operation-img
+{
+  height: 100rpx;
+  width: 100rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.operation-nums
+{
+  
+}
+
+.setup
+{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 80rpx;
+  border-radius: 20rpx;
+  background-color: gray;
+  align-items: center;
+}
+
+.setup-text
+{
+  margin-top: 15rpx;
+  color:white;
+}
+
+.deleteShop{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 80rpx;
+  border-radius: 20rpx;
+  background-color: tomato;
+  align-items: center;
+  margin-left: 40rpx;
+}
+
+.deleteShop-text
+{
+  margin-top: 15rpx;
+  color:white;
+}
+
+.toCenter
+{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.money
+{
+  color: orangered;
+}

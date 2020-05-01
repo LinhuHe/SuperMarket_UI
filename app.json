@@ -8,7 +8,10 @@
     "pages/goodsDetail/goodsDetail",
     "pages/order/order",
     "pages/orderList/orderList",
-    "pages/orderListSingleStatus/orderListSingleStatus"
+    "pages/orderListSingleStatus/orderListSingleStatus",
+    "pages/shoperHome/shoperHome",
+    "pages/setUp/setUp",
+    "pages/setUpNickname/setUpNickname"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -19,10 +22,6 @@
   },
  "tabBar": {
    "list": [
-     {
-     "pagePath": "pages/index/index",
-     "text": "index"
-     },
      {
       "pagePath": "pages/home/home",
       "text": "首页",

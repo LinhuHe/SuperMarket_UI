@@ -1,0 +1,20 @@
+<!--pages/setUpNickname/setUpNickname.wxml-->
+<view class='single-setup-nickname'>
+  <view class='nickname-text'>昵称/商店名</view>
+  <view class = 'setup-info'>
+    <input class = 'nickname' value="{{userInfo.userNickname}}" bindinput="inputNickname">{{userInfo.userNickname}} </input>
+  </view>
+</view>
+
+
+<view wx:if="{{status==0}}" class='status-wrong'>出现某些错误，请退出重试</view>
+<view wx:elif="{{status==1}}" class='status-wrong'>该昵称已被注册，请重试</view>
+
+<view class = 'operation'>
+  <view class = 'cancle'>
+    <view class='cancle-text' bindtap='cancle'>取消</view>
+  </view>
+  <view class = 'confirm'>
+    <view class='confirm-text' bindtap="finishInput">完成</view>
+  </view>
+</view>

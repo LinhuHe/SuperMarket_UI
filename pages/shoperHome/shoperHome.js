@@ -1,32 +1,23 @@
-// pages/home/home.js
-const app=getApp()
-
+// pages/shoperHome/shoperHome.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      service : app.globalData.Service,
-
-     
-
-      swiperimgs:[
-        {src:"../../picture/tupian1.jpg",rid:0},
-        {src:"../../picture/tupian2.jpg",rid:0},
-        {src:"../../picture/tupian3.jpg",rid:0}
-      ],
-
-      goodsData:[  //价格应该去detail表中寻找
-        
-      ]
+    shoperInfo:[],
+    gain_day:0,
+    gain_all:10,
+    shoperOperation:[
+      {name:"我的商品",src:"../../picture/shoper_mygoods.png",nums:-1,jumpid:0},
+      {name:"状态管理",src:"../../picture/shoper_orderStatus.png",nums:-1,jumpid:1},
+      {name:"售出商品",src:"../../picture/shoper_sold.png",nums:-1,jumpid:2},
+    ]
   },
-
-  tapOnImg(event)
+  tapOnSetUp()
   {
-    console.log(event.currentTarget.dataset.rid);
     wx.navigateTo({
-      url: '../goodsDetail/goodsDetail?rid='+event.currentTarget.dataset.rid
+      url: '../setUp/setUp?userInfo='+JSON.stringify(this.data.shoperInfo)
     })
   },
 
@@ -34,24 +25,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    
-      wx.request({
-        url: this.data.service+'GoodsRough/findGoodsRoughByTimeDesc',
-        success(res) {
-          console.log(res)
-          that.setData({
-            goodsData:res.data
-          })
-        }
+    if(options)
+    {
+      this.setData({
+        shoperInfo : JSON.parse(options.shoperInfo)  //解JSON
       })
+      console.log("得到shoperInfo",this.data.shoperInfo)
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+
   },
 
   /**
@@ -79,8 +66,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.onLoad()
-    wx.stopPullDownRefresh();
+
   },
 
   /**

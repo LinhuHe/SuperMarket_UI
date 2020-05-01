@@ -1,124 +1,84 @@
 //index.js
-//获取应用实例
-const app = getApp()
+const app=getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
+    //判断小程序的API，回调，参数，组件等是否在当前版本可用。
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    player:[
-      {id:1,name:'k'},
-      {id:2,name:'s'}
-    ],
-    counter:0,
-    isshow:0,
-    pickerindex:[0,0,0],
-    pickercolumn:[
-      ["color",'ls','hs','bs'],
-      ["style"],
-      ["size"]
-    ],
-    pickerstyle:["无"],
-    sizels:['l','m'],
-    sizehs:['g'],
-    sizebs:['h','r','q'],
-    
-  },
-  tapToShow(){
-    this.setData({
-      isshow:1
-    })
-  },
-  bindMultiPickerChange(e)  //点击确认后的index数组
-  {
-    console.log('picker最终选择是 ： ', e.detail.value)
-    this.setData({
-      pickerindex: e.detail.value
-    })
-  },
-  bindMultiPickerColumnChange(e) //知道哪一行变化
-  {
-    var stand = 1;
-    console.log('修改的列为', e.detail.column, '，这一列值为', e.detail.value);
-    var data={
-      pickercolumn: this.data.pickercolumn,
-      pickerindex: this.data.pickerindex
-    }
-    data.pickerindex[e.detail.column] = e.detail.value
-    //console.log(e.detail.column)
-    if(e.detail.column==0)
-    {
-    //console.log(data.pickerindex[0])
-    switch(data.pickerindex[0])
-    {
-      case 1:{ 
-      data.pickercolum[2]=['l','m']
-      break;
-      }
-      case 2:{ 
-        data.pickercolum[2]=this.data.sizehs
-      break;
-      }
-      case 3:{ 
-        data.pickercolum[2]=this.data.sizebs
-      break;
-      }
-    }
-    this.setData(data);
-    console.log(data.pickercolum[2])
-    console.log(this.data.pickercolum[2])
-    }
-  },
-
-  tapOnButton(){
-    this.setData({
-      counter:this.data.counter+1
-    })
-    console.log(this.data.counter);
-  },
-
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    isHide: false
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+    var that = this;
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              // 用户已经授权过,不需要显示授权页面,所以不需要改变 isHide 的值
+              // 根据自己的需求有其他操作再补充
+              // 我这里实现的是在用户授权成功后，调用微信的 wx.login 接口，从而获取code
+              wx.login({
+                success: res => {
+                  // 获取到用户的 code 之后：res.code
+                  //console.log("用户的code:" + res.code);
+                  // 可以传给后台，再经过解析获取用户的 openid
+                  // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
+                   wx.request({
+                  //     // 自行补上自己的 APPID 和 SECRET
+                     url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx1d1c09bef8994e61&secret=0be88d39d9bc10a53c8f173112b0b2a6&js_code=' + res.code + '&grant_type=authorization_code',
+                       success: res => {
+                  //         // 获取到用户的 openid
+                           //console.log("用户的openid:" + res.data.openid);
+                       }
+                   });
+                }
+              });
+            }
+          });
+
+          wx.switchTab({
+            url: '../home/home',
           })
+        } else {
+          // 用户没有授权
+          // 改变 isHide 的值，显示授权页面
+          that.setData({
+            isHide: true
+          });
         }
-      })
-    }
+      }
+    });
+
+
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+  bindGetUserInfo: function (e) {
+    if (e.detail.userInfo) {
+      //用户按了允许授权按钮
+      var that = this;
+      // 获取到用户的信息了，打印到控制台上看下
+      app.globalData.userInfo=e.detail.userInfo;
+      //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
+      that.setData({
+        isHide: false
+      });
+      wx.switchTab({
+        url: '../home/home',
+      })
+    } else {
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          // 用户没有授权成功，不需要改变 isHide 的值
+          if (res.confirm) {
+          }
+        }
+      });
+    }
   }
 })

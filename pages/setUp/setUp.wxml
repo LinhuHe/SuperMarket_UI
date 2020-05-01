@@ -1,0 +1,35 @@
+<!--pages/setUp/setUp.wxml-->
+<view>
+  <view class='single-setup-portrait' bindtap="changePortrait">
+    <view class='portrait-text'>头像</view>
+    <view class = 'setup-info'>
+      <image src="../../picture/youJianKuoHao.png" class='youjiankouhao-portrait'></image>
+      <image src='{{userInfo.userPortrait}}' class = 'portrait-img'></image>
+    </view>
+  </view>
+
+  <view class='single-setup-nickname' bindtap="changeNickname">
+    <view class='nickname-text'>昵称/商店名</view>
+    <view class = 'setup-info'>
+      <image src="../../picture/youJianKuoHao.png" class='youjiankouhao-nickname'></image>
+      <view class = 'nickname'>{{userInfo.userNickname}} </view>
+    </view>
+  </view>
+
+  <view class='single-setup-key'>
+    <view class='key-text'>密钥</view>
+    <view class = 'setup-info'>
+      <view class = 'key'>{{userInfo.userId}} </view>
+    </view>
+  </view>
+
+  <view class='single-setup-shop'>
+    <view class='shop-text'>商店</view>
+    <view class = 'setup-info'>
+      <view class = 'is-shoper' wx:if='{{userInfo.isShoper}}==1'>已开通</view>
+      <view class='no-shoper' wx:else>未开通</view>
+    </view>
+  </view>
+
+
+</view>
