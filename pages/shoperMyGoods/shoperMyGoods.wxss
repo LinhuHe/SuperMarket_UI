@@ -1,0 +1,432 @@
+/* pages/shoperMyGoods/shoperMyGoods.wxss */
+
+.navbar
+{
+  flex: none;
+  display: flex;
+  background: #fff;
+  font-size: 30rpx;
+  color: #bbbbbb;
+}
+.navbar-item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 90rpx;
+}
+.navbar-item-active{
+  color: #908df5;
+}
+.navbar-item-active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rpx;
+  background: #908df5;
+}
+
+.allMyGoods
+{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.singleOrder{
+  border-top:5rpx #E6E6FA solid ;
+  border-bottom:5rpx #E6E6FA solid ;
+  border-radius: 20rpx;
+  background-color: #FFFAF0;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.orderkey
+{
+  word-break: keep-all;
+  font-size: 35rpx;
+}
+
+.singleGood{
+  width: 100%;
+  height: 400rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+}
+
+.single-left
+{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-img
+{
+  width: 90%; /*300rpx*/
+  height: 300rpx;
+  border: 5rpx aqua solid;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+
+.goods-status-position
+{
+  margin-top: 20rpx;
+  justify-items: center;
+}
+
+.goods-status-position-wait
+{
+  color: orangered;
+}
+.goods-status-position-send
+{
+  color: orange;
+}
+.goods-status-position-recived
+{
+  color: green;
+}
+.goods-status-position-back
+{
+  color: gray;
+}
+.goods-status-position-backsuccess
+{
+  color: darkgreen;
+}
+.goods-status-position-backfail
+{
+  color: red;
+}
+
+.singleInfo-check
+{
+  width: 60%; /*450rpx*/
+  height: 400rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-name-check
+{
+  width: 100%;
+  color: black;
+  font-size: 45rpx;
+  font-weight: bold;
+
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;/*设置 需要显示的行数*/
+  overflow:hidden; /*超出规定（默认为1）行文字自动隐藏 也有其他值*/
+  text-overflow:ellipsis; /*文字隐藏后添加省略号*/
+}
+
+.single-price-check
+{
+  font-size: 40rpx;
+  color: OrangeRed;
+  margin-bottom: 10rx;
+  margin-top:10rpx;
+}
+
+.rname-check
+{
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;/*设置 需要显示的行数*/
+  overflow:hidden; /*超出规定（默认为1）行文字自动隐藏 也有其他值*/
+  text-overflow:ellipsis; /*文字隐藏后添加省略号*/
+}
+
+.rphone-check
+{
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;/*设置 需要显示的行数*/
+  overflow:hidden; /*超出规定（默认为1）行文字自动隐藏 也有其他值*/
+  text-overflow:ellipsis; /*文字隐藏后添加省略号*/
+
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.rdaddr-check{
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;/*设置 需要显示的行数*/
+  overflow:hidden; /*超出规定（默认为1）行文字自动隐藏 也有其他值*/
+  text-overflow:ellipsis; /*文字隐藏后添加省略号*/
+
+  font-size: 35rpx;
+}
+
+.order-date{
+  width: 100%;
+}
+
+.css
+{
+  display: flex;
+  flex-direction: row;
+  font-size: 40rpx;
+  color: gray;
+  justify-content: center;
+}
+
+.status-manage
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.confirmSend
+{
+  height: 60rpx;
+  width: 50%;
+  background-color: orangered;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+}
+
+.confirmArrive
+{
+  height: 60rpx;
+  width: 50%;
+  background-color: orangered;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+}
+.back-operation
+{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.refuseBack
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: gray;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+  margin-right: 40rpx;
+}
+.agreeBack
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: orangered;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+}
+
+.line
+{
+  width: 750rpx;
+  height: 3rpx;
+  background-color: #DCDCDC;
+}
+
+
+.wholeGoods
+{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  background-color: whitesmoke;
+}
+
+.singleGoods-input
+{
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+}
+
+.singleGoods-input .img
+{
+  width: 30%; /*300rpx*/
+  height: 225rpx;
+  border: 5rpx aqua solid;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+
+.singleInfo-input
+{
+  width: 70%; /*450rpx*/
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-input-name
+{
+  height: 100rpx;
+  width: 100%;
+  color: black;
+  font-size: 45rpx;
+  font-weight: bold;
+
+  border-bottom: #FFFAF0;
+}
+.confirmAndDelete
+{
+  display: flex;
+  flex-direction: row;
+}
+.delete
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: gray;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+  margin-right: 40rpx;
+}
+.showup
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: green;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+  margin-right: 40rpx;
+}
+.unfold
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: orangered;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+}
+.allTypes
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.singleType
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-bottom: 2rpx gray solid;
+  margin-bottom: 40rpx;
+}
+.singleTypecss
+{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+.singleTypecss-style
+{
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  background-color: tomato;
+  border-radius: 20rpx;
+  
+}
+.singleTypecss-text
+{
+  font-size: 50rpx;
+  color: white;
+  position: relative;
+  left: 10rpx;
+}
+.singleType .stock-price
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.stock-price-style
+{
+border: 2rpx orangered solid;
+/*border-bottom: 2rpx orangered solid;*/
+border-radius: 20rpx;
+margin-left: 40rpx;
+margin-right: 40rpx;
+}
+
+.singleType .deleteType
+{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20rpx;
+  position: relative;
+  right: 10rpx;
+  text-align: center; 
+}
+
+.singleType .deleteType .deleteType-text
+{
+  width: 20%;
+  height: 50rpx; 
+  background-color: gray;
+  border-radius: 20rpx;
+  margin-bottom: 10rpx;
+  position: relative;
+  bottom: 10rpx;
+  color: white;
+}
+
+
+/*.stock-price-priceStyle
+{
+  width: 30%;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  color: tomato;
+  border-radius: 20rpx;
+  color: gray;
+}
+.stock-price-stockStyle
+{
+
+}*/
+
+.single-cs
+{
+  color: gray;
+  font-size: 35rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  /*text-align: center;*/
+}
+
+
+
+
+

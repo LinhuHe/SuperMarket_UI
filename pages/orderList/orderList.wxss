@@ -68,6 +68,14 @@
 {
   color: gray;
 }
+.goods-status-position-backsuccess
+{
+  color: darkgreen;
+}
+.goods-status-position-backfail
+{
+  color: red;
+}
 
 .singleInfo
 {
@@ -136,6 +144,52 @@
 
 .order-date{
   width: 100%;
+}
+
+.css
+{
+  display: flex;
+  flex-direction: row;
+  font-size: 40rpx;
+  color: gray;
+  justify-content: center;
+}
+
+.status-manage
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.requestBack
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: gray;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+  margin-left: 40rpx;
+
+}
+
+.confirmRecive
+{
+  height: 60rpx;
+  width: 40%;
+  background-color: orangered;
+  text-align: center;
+  color: white;
+  border-radius: 20rpx;
+
+}
+
+.status-manage-offset
+{
+  position: relative;
+  top: 5rpx;
 }
 
 .line

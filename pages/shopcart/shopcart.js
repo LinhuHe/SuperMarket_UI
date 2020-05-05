@@ -141,6 +141,7 @@ Page({
    */
   onShow: function () {
     this.onLoad()
+    wx.stopPullDownRefresh()
   },
 
   /**

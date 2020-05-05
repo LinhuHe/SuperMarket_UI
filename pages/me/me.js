@@ -67,10 +67,31 @@ Page({
            
           }else if(res.confirm){
             // 用户点击了确定
-            //跳到商家界面
-            wx.navigateTo({
-              url: '../shoperHome/shoperHome?shoperInfo='+JSON.stringify(that.data.userInfo)  //JSON string化
+            wx.request({
+              url: that.data.service+'/UserInfoController/beOrNotBeShoper',
+              data:{
+                uid:app.globalData.openId,
+                isShoper:1,
+              },
+              success(res)
+              {
+                if(res.data==1) //写入成功
+                {
+                  //跳到商家界面
+                  wx.navigateTo({
+                  url: '../shoperHome/shoperHome?shoperInfo='+JSON.stringify(that.data.userInfo)  //JSON string化
+                })
+                }
+                else{ //写入失败
+                  wx.showModal({
+                    title: '提示',
+                    content: '开通发生错误，请稍后重试',
+                  })
+                }
+              }
             })
+            
+            
           }
         }
       })

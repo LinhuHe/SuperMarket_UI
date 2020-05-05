@@ -1,7 +1,8 @@
-<!--pages/orderListSingleStatus/orderListSingleStatus.wxml-->
+<!--pages/shoperSoldGoods/shoperSoldGoods.wxml-->
 <view class='wholeOrder'>
-  <block wx:for="{{orderListInfo}}">
+  <block wx:for="{{allSoldGods}}">
     <view class = 'singleOrder'>
+      <view class = 'orderkey'>订单钥:{{item.orderKey}}</view>
       <view class='singleGood' bindtap="GoToGood" data-rid="{{item.orderRid}}">
         <view class='single-left'>
           <image class='order-img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
@@ -29,4 +30,11 @@
       <view class='order-date'>下单日期：{{item.date_str}}</view>
     </view>
   </block>
+</view>
+
+<view class='buy'>
+  <view class='priceShow'>
+    <view class='heji'>总营收:</view>
+    <view class='price'>￥{{totalGain}}</view>
+  </view>
 </view>

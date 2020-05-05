@@ -2,7 +2,7 @@
 <checkbox-group  catchchange="selected">
 <block wx:for="{{shopCartData}}">
 <view class='wholeShop'>
-  <view class='shoper-name'>{{item[0].goodsShoper}}的商店
+  <view class='shoper-name'>{{item[0].goodsShoperName}}的商店
       <block wx:for="{{item}}">
         <view class='singleGood' >
           <checkbox wx:if="{{item.isOnSale==1 && item.goodsStock>0}}" class='isSelect' value="{{item.goodsPrice}},{{item.goodsDid}}" ></checkbox>

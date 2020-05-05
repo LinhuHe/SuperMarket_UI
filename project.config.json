@@ -131,6 +131,13 @@
 					"id": -1,
 					"name": "setUp",
 					"pathName": "pages/setUp/setUp",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shoperMyGoods/shoperMyGoods",
+					"pathName": "pages/shoperMyGoods/shoperMyGoods",
 					"scene": null
 				}
 			]

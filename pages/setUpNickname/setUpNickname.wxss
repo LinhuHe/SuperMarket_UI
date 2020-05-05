@@ -3,8 +3,8 @@
 {
   display: flex;
   flex-direction: row-reverse;
-  position: absolute;
-  right: 20rpx;
+  position: relative;
+  left: 60rpx;
 }
 
 .single-setup-nickname
@@ -20,6 +20,7 @@
 
 .nickname-text
 {
+  width: 40%;
  position: relative;
  left: 10rpx;
  margin-bottom: 20rpx;

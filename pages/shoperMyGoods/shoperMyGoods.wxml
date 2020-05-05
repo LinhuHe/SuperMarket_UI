@@ -1,0 +1,101 @@
+<!--pages/shoperMyGoods/shoperMyGoods.wxml-->
+<view class="navbar">
+  <view wx:for="{{navbar}}" data-idx="{{index}}" class="navbar-item {{currentTab==index ? 'navbar-item-active' : ''}}" bindtap="navbarTap">{{item}}</view>
+</view>
+
+
+<view wx:if="{{currentTab==0}}" class='allMyGoods'>
+  <block wx:for="{{allSoldGoods}}">
+    <view class = 'singleOrder'>
+    <view class = 'orderkey'>订单钥:{{item[0].orderKey}}</view>
+      <block wx:for="{{item}}">
+        <view class='singleGood' bindtap="GoToGood" data-rid="{{item.orderRid}}">
+          <view class='single-left'>
+            <image class='order-img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
+            <view class='goods-status-position'>状态：
+              <text wx:if='{{item.orderStatus==0}}' class= 'goods-status-position-wait'>待发货</text>
+              <text wx:elif='{{item.orderStatus==1}}' class= 'goods-status-position-send'>待收货</text>
+              <text wx:elif='{{item.orderStatus==2}}' class= 'goods-status-position-recived'>已收货</text>
+              <text wx:elif='{{item.orderStatus==3}}' class= 'goods-status-position-back'>退货中</text>
+              <text wx:elif='{{item.orderStatus==4}}' class= 'goods-status-position-backsuccess'>退货完成</text>
+              <text wx:elif='{{item.orderStatus==5}}' class= 'goods-status-position-backfail'>退货失败</text>
+            </view>
+          </view>
+          <view class='singleInfo-check'>
+            <view class='single-name-check'>{{item.goodsName}}</view>
+            <view class='single-price-check'>￥{{item.orderPrice}}</view>
+            <view class = 'rname-check'>{{item.desInfo[0]}}</view>
+            <view class = 'rphone-check'>{{item.desInfo[1]}}</view> 
+            <view class = 'rdaddr-check'>{{item.desInfo[2]}}</view>
+          </view>
+        </view>
+        <view class='css'>
+          <view class='css-color' wx:if="{{item.color}}">颜色:{{item.color}} |</view>
+          <view class='css-style' wx:if="{{item.style}}">样式:{{item.style}} |</view>
+          <view class='css-size'  wx:if="{{item.size}}">规格:{{item.size}}</view>
+        </view>
+        <view class='status-manage'>
+          <view wx:if="{{item.orderStatus==0}}" class = 'confirmSend' bindtap="confirmSend" data-orderid="{{item.orderId}}">  
+            <text class='status-manage-offset'>确认发货</text>
+          </view>
+          <!--<view wx:if="{{item.orderStatus==1}}" class='confirmArrive' bindtap="confirmArrive" data-orderid="{{item.orderId}}">
+            <text class='status-manage-offset'>确认送达</text>
+          </view>-->
+          <view wx:if="{{item.orderStatus==3}}" class = 'back-operation'>
+            <view class='refuseBack' bindtap="refuseBack" data-orderid="{{item.orderId}}"><text>驳回退货申请</text></view>
+            <view class='agreeBack' bindtap="agreeBack" data-orderid="{{item.orderId}}"><text>同意退货申请</text></view>
+          </view>
+        </view>
+        <view class='line'></view>
+      </block>
+      <view class='order-date'>下单日期：{{item[0].date_str}}</view>
+    </view>
+    
+  </block>
+</view>
+
+<view wx:if="{{currentTab==1}}" class='manageGoods'>
+  <view class='wholeGoods'>
+    <block wx:for="{{allTypesGoods}}" wx:for-index='itm_idx'>
+      <view class='singleGoods-input'>
+        <image class='img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}' bindtap="changGoodsPortrait" data-rid='{{item.goodsRid}}'></image>
+        <view class='singleInfo-input'>
+          <textarea class='single-input-name' value="{{item.goodsName}}" bindinput="inputGoodsName" bindblur="changeGoodsName" data-rid="{{item.goodsRid}}"></textarea >
+          <view class='single-cs'>{{item.goodsCollection}}人收藏 | 总销量{{item.goodsSales}}</view>
+          <view class='confirmAndDelete'>
+            <view wx:if="{{item.isOnSale==1}}" class='delete' bindtap="deleteGoods" data-rid='{{item.goodsRid}}'><text class='status-manage-offset'>下架</text></view>
+            <view wx:if="{{item.isOnSale==0}}" class='showup' bindtap="showupGoods" data-rid='{{item.goodsRid}}'><text class='status-manage-offset'>上架</text></view>
+            <view class='unfold' bindtap="unfoldType" data-idx='{{itm_idx}}'><text class='status-manage-offset'>{{item.unfold?"折叠":"展开"}}</text></view>
+          </view>
+        </view>
+      </view>
+      <view wx:if='{{item.unfold}}' class='allTypes'>
+            <block wx:for="{{item.detail}}">
+              <view class='singleType'>
+                <view class='singleTypecss'>
+                  <view class='singleTypecss-style'><text class='singleTypecss-text'>颜色:{{item.goodsColor?item.goodsColor:"无"}}</text> </view>
+                  <view class='singleTypecss-style'><text class='singleTypecss-text'>样式:{{item.goodsStyle?item.goodsStyle:"无"}}</text> </view>
+                  <view class='singleTypecss-style'><text class='singleTypecss-text'>规格:{{item.goodsSize?item.goodsSize:"无"}}</text></view>
+                </view>
+                <view class='stock-price'>
+                  <view class='stock-price-style'>设置价格:
+                    <input  value='{{item.goodsPrice}}' type='number' bindinput="inputPrice" bindblur="changePrice" data-did='{{item.goodsDid}}'></input>
+                  </view>
+                  <view class='stock-price-style'>设置库存:
+                    <input  value='{{item.goodsStock}}' type='number' bindinput="inputStock" bindblur="changeStock" data-did='{{item.goodsDid}}'></input>
+                  </view>
+                </view>
+                <view class='deleteType' >
+                  <view class = 'deleteType-text' bindtap="deleteType" data-did='{{item.goodsDid}}'>删除</view>
+                </view>
+              </view>
+            </block>
+          </view>
+    </block>
+
+  </view>
+</view>
+
+<view wx:if="{{currentTab==2}}" class='uploadGoods'>
+
+</view>

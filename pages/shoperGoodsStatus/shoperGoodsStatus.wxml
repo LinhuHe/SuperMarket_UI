@@ -1,4 +1,4 @@
-<!--pages/orderList/orderList.wxml-->
+<!--pages/shoperGoodsStatus/shoperGoodsStatus.wxml-->
 <view class='wholeOrder'>
   <block wx:for="{{orderListInfo}}">
     <view class = 'singleOrder'>
@@ -9,11 +9,11 @@
             <image class='order-img' src='{{service}}/userPic/{{item.goodsShoper}}/{{item.goodsProtrait}}'></image>
             <view class='goods-status-position'>状态：
               <text wx:if='{{item.orderStatus==0}}' class= 'goods-status-position-wait'>待发货</text>
-              <text wx:elif='{{item.orderStatus==1}}' class= 'goods-status-position-send'>待收货</text>
-              <text wx:elif='{{item.orderStatus==2}}' class= 'goods-status-position-recived'>已收货</text>
+              <!--<text wx:elif='{{item.orderStatus==1}}' class= 'goods-status-position-send'>待收货</text>-->
+              <!--<text wx:elif='{{item.orderStatus==2}}' class= 'goods-status-position-recived'>已收货</text>-->
               <text wx:elif='{{item.orderStatus==3}}' class= 'goods-status-position-back'>退货中</text>
-              <text wx:elif='{{item.orderStatus==4}}' class= 'goods-status-position-backsuccess'>退货完成</text>
-              <text wx:elif='{{item.orderStatus==5}}' class= 'goods-status-position-backfail'>退货失败</text>
+              <!--<text wx:elif='{{item.orderStatus==4}}' class= 'goods-status-position-back'>退货完成</text>
+              <text wx:elif='{{item.orderStatus==5}}' class= 'goods-status-position-back'>退货失败</text>-->
             </view>
           </view>
           <view class='singleInfo'>
@@ -26,16 +26,19 @@
         </view>
         <view class='css'>
           <view class='css-color' wx:if="{{item.color}}">颜色:{{item.color}} |</view>
-          <view class='css-style' wx:if="{{item.style}}">样式:{{item.style}} |</view>
-          <view class='css-size'  wx:if="{{item.size}}">规格:{{item.size}}</view>
+          <view class='css-style' wx:if="{{item.style}}"> 样式:{{item.style}} |</view>
+          <view class='css-size'  wx:if="{{item.size}}"> 规格:{{item.size}}</view>
         </view>
         <view class='status-manage'>
-          <view wx:if="{{item.orderStatus==1}}" class='confirmRecive' bindtap="confirmRecive" data-orderid="{{item.orderId}}">
-            <text class='status-manage-offset'>确认收货</text>
+          <view wx:if="{{item.orderStatus==0}}" class = 'confirmSend' bindtap="confirmSend" data-orderid="{{item.orderId}}">  
+            <text class='status-manage-offset'>确认发货</text>
           </view>
-
-          <view wx:if="{{item.orderStatus==1 || item.orderStatus==0}}" class='requestBack' bindtap="requestBack" data-orderid="{{item.orderId}}">
-            <text class='status-manage-offset'>申请退款</text>
+          <!--<view wx:if="{{item.orderStatus==1}}" class='confirmArrive' bindtap="confirmArrive" data-orderid="{{item.orderId}}">
+            <text class='status-manage-offset'>确认送达</text>
+          </view>-->
+          <view wx:if="{{item.orderStatus==3}}" class = 'back-operation'>
+            <view class='refuseBack' bindtap="refuseBack" data-orderid="{{item.orderId}}"><text>驳回退货申请</text></view>
+            <view class='agreeBack' bindtap="agreeBack" data-orderid="{{item.orderId}}"><text>同意退货申请</text></view>
           </view>
         </view>
         <view class='line'></view>

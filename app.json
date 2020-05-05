@@ -11,7 +11,10 @@
     "pages/orderListSingleStatus/orderListSingleStatus",
     "pages/shoperHome/shoperHome",
     "pages/setUp/setUp",
-    "pages/setUpNickname/setUpNickname"
+    "pages/setUpNickname/setUpNickname",
+    "pages/shoperSoldGoods/shoperSoldGoods",
+    "pages/shoperGoodsStatus/shoperGoodsStatus",
+    "pages/shoperMyGoods/shoperMyGoods"
   ],
   "window": {
     "backgroundTextStyle": "dark",

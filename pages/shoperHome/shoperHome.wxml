@@ -8,19 +8,18 @@
     </view>
     <view class = "today-gain">
     今日营收:
-      <view class='money'>￥{{gain_day}}</view>
+      <view class='money'>￥{{gains[0]}}</view>
     </view>
     <view class = "all-gain">
     总营收:
-      <view class='money'>￥{{gain_all}}</view>
+      <view class='money'>￥{{gains[1]}}</view>
     </view>
   </view>  
 </view>
 
 <view class = 'shoper-operation'>
   <block wx:for="{{shoperOperation}}">
-    <view class='singleOperation'>
-      <view  class='operation-name'>{{item.nums}}</view>
+    <view class='singleOperation' bindtap='tapOnSingleOperation' data-jumpid='{{item.jumpid}}'>
       <image class='operation-img' src="{{item.src}}"></image>
       <view  class='operation-nums'>{{item.name}}</view>
     </view>
