@@ -97,5 +97,46 @@
 </view>
 
 <view wx:if="{{currentTab==2}}" class='uploadGoods'>
+  <view class='upload-input-name'>
+    <textarea placeholder='输入物品名字' bindinput="inputUploadGoodsName" class='inputName-upload'></textarea>
+    <image src="../../picture/youJianKuoHao.png" class='youjiankuohao-inputName'></image>
+  </view>
 
+  <view class='upload-input-type'>
+    <input placeholder="设置标签" bindinput="inputUploadGoodsType" class='inputType-upload'></input>
+    <image src="../../picture/youJianKuoHao.png" class='youjiankuohao-inputType'></image>
+  </view>
+
+  <view bindtap='selectprotraot' class='upload-choose-image'>
+    <view class='upload-choose-image-detail'>
+      <image src="../../picture/youJianKuoHao.png" class = 'youjiankuohao-chooseImage'></image>
+      <image src='{{portraitURL}}' class='chooseImage-upload'></image>
+    </view>
+  </view>
+
+  <view bindtap="selectDetailImages" class='upload-choose-more'>
+    <block wx:for="{{detailImages}}">
+      <image src='{{item}}' class='chooseMore-upload'></image>
+    </block>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='upload-input-detail'>
+    <block wx:for="{{uploadRoughInfo.uploadDetails}}" >
+      <view class = 'input-detail-single'>
+        <view >
+          <input class='input-detail-color' placeholder='{{item.goodsColor?item.goodsColor:"请输入颜色"}}' bindinput="inputUpdateColor" data-idx="{{index}}"></input>
+          <input placeholder='{{item.goodsStyle?item.goodsStyle:"请输入样式"}}' bindinput="inputUpdateStyle" data-idx="{{index}}"></input>
+          <input placeholder='{{item.goodsSize?item.goodsSize:"请输入规格"}}' bindinput="inputUpdateSize" data-idx="{{index}}"></input>
+        </view>       
+        <view>
+          <input type="number" placeholder='{{item.goodsPrice?item.goodsPrice:"请输入价格"}}' bindinput="inputUpdatePrice" data-idx="{{index}}"></input>
+          <input type="number" placeholder='{{item.goodsStock?item.goodsStock:"请输入库存"}}' bindinput="inputUpdateStock" data-idx="{{index}}"></input>
+        </view>
+      </view>
+    </block>
+    <image class='addType-img' src="../../picture/add.png" bindtap="addDetail"></image>
+  </view>
+  <view bindtap="uploadGoods" class = 'confirmUpload'><text class='confirmUpload-text'>上架商品</text></view>
 </view>

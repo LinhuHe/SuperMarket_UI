@@ -426,7 +426,193 @@ margin-right: 40rpx;
   /*text-align: center;*/
 }
 
+.uploadGoods
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-input-name
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 2rpx gray solid;
+}
+
+.inputName-upload
+{
+  width: 80%;
+  height: 150rpx;
+  border: 8rpx #FFE4E1 solid;
+  border-radius: 10rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.youjiankuohao-inputName
+{
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  top: 80rpx;
+  left:30rpx
+}
+
+.upload-input-type
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10rpx;
+
+  border-bottom: 2rpx gray solid;
+}
+
+.inputType-upload
+{
+  width: 30%;
+  height: 60rpx;
+  border: 8rpx #FFE4E1 solid;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+
+  position: relative;
+  right: 190rpx;
+  border-radius: 10rpx;
+
+}
+
+.youjiankuohao-inputType
+{
+  width: 50rpx;
+  height: 50rpx;
+
+  position: relative;
+  left: 210rpx;
+  top: 35rpx; 
+}
+
+.upload-choose-image::before
+{
+  content: "选择图片";
+  position: relative;
+  top: 80rpx;
+  left: 40rpx;
+}
+.upload-choose-image
+{
+  display: flex;
+  flex-direction: row;
+
+  border-bottom: 2rpx gray solid;
+}
+.upload-choose-image-detail
+{
+  width: 77%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.chooseImage-upload
+{
+  height: 200rpx;
+  width: 200rpx;
+  background-color: lightgray;
+}
+
+.youjiankuohao-chooseImage
+{
+  height: 50rpx;
+  width: 50rpx;
+  position: relative;
+  top: 40%;
+}
+
+.upload-choose-more
+{
+  width: 98%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 8rpx #FFE4E1 solid;
+}
+
+.chooseMore-upload
+{
+  width: 30%;
+  height: 225rpx;
+  margin-right: 1%;
+  margin-left: 1%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.upload-input-detail::before
+{
+  /*content: "添加型号";*/
+}
+.upload-input-detail
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-detail-single
+{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border-bottom: 8rpx #FFE4E1 solid;
+  border-top: 8rpx #FFE4E1 solid;
+  border-radius: 20rpx;
+
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
 
 
+.addType-img
+{
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  top: 120rpx;
+}
+
+.confirmUpload
+{
+  text-align: center;
+  justify-content: center;
+  height: 100rpx;
+  width: 40%;
+  background-color: orangered;
+  border-radius: 20rpx;
+
+  position: relative;
+  left: 30%;
+}
+
+.confirmUpload-text
+{
+  color: white;
+  position: relative;
+  top: 25rpx;
+}
+
+.line{
+  width: 100%;
+  height: 2rpx;
+  background-color: gray;
+  
+}
 
 

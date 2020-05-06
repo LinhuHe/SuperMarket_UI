@@ -18,7 +18,7 @@
   <view class='more'>
     <block wx:for="{{moreImgs}}">
       <view class='more-view'>
-        <image class = 'more-img' src="{{service}}/userPic/{{goodInfo.goodsShoper}}/{{item}}"></image>
+        <image class = 'more-img' lazy-load src="{{service}}/userPic/{{goodInfo.goodsShoper}}/{{item}}"></image>
       </view>
     </block>
   </view>

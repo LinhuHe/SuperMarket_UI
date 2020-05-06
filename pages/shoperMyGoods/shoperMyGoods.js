@@ -8,7 +8,7 @@ Page({
   data: {
     service:app.globalData.Service,
     navbar:["全部商品", "商品管理","上架商品"],
-    currentTab:  0,
+    currentTab:  2,
     allSoldGoods:[],
     allTypesGoods:[
       {
@@ -29,11 +29,42 @@ Page({
       }
     ],
     /*allTypesGoods:[[] ],*/
+    //testClass:{goodsDid:11,goodsStock:25,goodsRid:9,goodsStyle:"dw",goodsColor:"qw",goodsSize:"tw",goodsPrice:49},
     newName:'默认物品名',
     newPrice:'-1', //防止误操作
     newStock: -1, //防止误操作
-    shoperInfo:[]
+    shoperInfo:[],
+    uploadRoughInfo:
+    {
+      name:"",shoper:"",type:"",portrait:"",moreimg:"",
+      uploadDetails:[
+        {goodsStock:0,goodsPrice:0,goodsColor:"",goodsStyle:"",goodsSize:""}
+        //这里没法指定rid 所以必须和Rough绑定插入
+      ]
+    },
+    portraitURL:"../../picture/add.png",
+    detailImages:["../../picture/add.png"]
   },
+
+  /*classTest()
+  {
+    let that =this
+    console.log("传入数据",JSON.stringify(that.data.uploadDetails))
+    wx.request({
+      url: this.data.service+'/classTest',
+      data:{
+        gds:JSON.stringify(that.data.uploadDetails)
+      },
+      success(res)
+      {
+        console.log("suc",res)
+      },
+      fali(res)
+      {
+        console.log("fail",res)
+      }
+    })
+  },*/
 
   navbarTap(e)
   {
@@ -306,6 +337,234 @@ Page({
       }
     })
   },
+  inputUploadGoodsName(e)
+  {
+    console.log("输入上传商品名",e.detail.value);
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.name = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  inputUploadGoodsType(e)
+  {
+    console.log("输入上传商品类型",e.detail.value);
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.type = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  
+  selectprotraot()
+  {
+    let that = this
+    wx.chooseImage({
+      count: 1, // 最多
+      sizeType: ['compressed'], // 指定是原图还是压缩图
+      sourceType: ['camera','album'], // 指定来源是相册还是相机 
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        that.setData({
+          portraitURL : res.tempFilePaths[0]
+        })  
+      }
+    })
+  },
+  selectDetailImages()
+  {
+    let that = this
+    var data={
+      detailImages : this.data.detailImages
+    }
+    wx.chooseImage({
+      count: 8, // 最多
+      sizeType: ['compressed'], // 指定是原图还是压缩图
+      sourceType: ['camera','album'], // 指定来源是相册还是相机 
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        data.detailImages = res.tempFilePaths.concat(data.detailImages)
+        that.setData(data)  
+      }
+    })
+  },
+  addDetail()
+  {
+    console.log("添加一个类型")
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    //this.data.uploadRoughInfo.uploadDetails.push({goodsStock:0,goodsPrice:0,goodsColor:"",goodsStyle:"",goodsSize:""})
+    data.uploadRoughInfo.uploadDetails.push({goodsStock:0,goodsPrice:0,goodsColor:"",goodsStyle:"",goodsSize:""})
+    this.setData(data)
+    console.log(this.data.uploadRoughInfo.uploadDetails)
+  },
+  inputUpdateColor(e)
+  {
+    console.log("输入上传商品detail-color",e.detail.value," 修改序号为",e.currentTarget.dataset.idx);
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.uploadDetails[e.currentTarget.dataset.idx].goodsColor = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  inputUpdateStyle(e)
+  {
+    console.log("输入上传商品detail-style",e.detail.value," 修改序号为",e.currentTarget.dataset.idx);
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.uploadDetails[e.currentTarget.dataset.idx].goodsStyle = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  inputUpdateSize(e)
+  {
+    console.log("输入上传商品detail-size",e.detail.value," 修改序号为",e.currentTarget.dataset.idx);
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.uploadDetails[e.currentTarget.dataset.idx].goodsSize = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  inputUpdatePrice(e)
+  {
+    console.log("输入上传商品detail-price",e.detail.value," 修改序号为",e.currentTarget.dataset.idx);
+    if(e.detail.value<=0)
+    {
+      wx.showToast({
+        title: '非法价格',
+        image:'../../picture/fail.png'
+      })
+      return;
+    }
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.uploadDetails[e.currentTarget.dataset.idx].goodsPrice = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+  inputUpdateStock(e)
+  {
+    console.log("输入上传商品detail-stock",e.detail.value," 修改序号为",e.currentTarget.dataset.idx);
+    if(e.detail.value<=0)
+    {
+      wx.showToast({
+        title: '非法库存量',
+        image:'../../picture/fail.png'
+      })
+      return;
+    }
+    var data={
+      uploadRoughInfo : this.data.uploadRoughInfo
+    }
+    data.uploadRoughInfo.uploadDetails[e.currentTarget.dataset.idx].goodsStock = e.detail.value
+    this.setData(data)
+    console.log("当前upload信息为",this.data.uploadRoughInfo)
+  },
+
+  uploadGoods()
+  {
+    let that = this
+    console.log("点击上传")
+    var tempRough =  this.data.uploadRoughInfo
+    var tempDetail = this.data.uploadRoughInfo.uploadDetails
+    console.log("replaceNull测试 rough",tempRough)
+    if(tempRough.name!=null && tempRough.type!=null && (tempRough.name.replace(/\s*/g,"")=="" || tempRough.type.replace(/\s*/g,"")==''))
+    {
+      wx.showToast({
+        title: '请完善信息',
+        image:'../../picture/fail.png'
+      })
+      return;
+    }
+    console.log("replaceNull测试 detail",tempDetail)
+    if(tempDetail.length==1 && (tempDetail[0].goodsColor.replace(/\s*/g,"")=='' || tempDetail[0].goodsStyle.replace(/\s*/g,"")=='' || tempDetail[0].goodsSize.replace(/\s*/g,"")==''))
+    {
+      wx.showToast({
+        title: '缺少型号',
+        image:'../../picture/fail.png'
+      })
+      return;
+    }
+    //发送除moreimg的所有信息
+    var thisRid=0
+    wx.uploadFile({
+      url: that.data.service + "/GoodsRough/addNewGoods",
+      filePath: this.data.portraitURL,
+      name: "portrait",
+      formData:{
+        goodsInfo:JSON.stringify(this.data.uploadRoughInfo)
+      },
+      success:function(res){
+        console.log("上传rough&detail信息返回值",res)  //返回的rid
+        if(res.data== -1)
+        {
+          wx.showToast({
+              title: '存在同名商品',
+              image:"../../picture/fail.png"
+            })
+          return;
+        }
+        else if(res.data==0){
+          wx.showToast({
+            title: '出现某些错误',
+            image:"../../picture/fail.png"
+          })
+          return;
+        }
+        else{  //rough成功了
+          thisRid = res.data
+          //设置moreimg栏
+          for(var i=0;i<that.data.detailImages.length;i++)
+          {
+            wx.uploadFile({
+              url: that.data.service + "/GoodsRough/upLoadImage",
+              filePath: that.data.detailImages[i],
+              name: "moreimg",
+              formData:{
+                uid : app.globalData.openId,
+                rid : thisRid
+              },
+              success:function(res){
+                console.log("插入图片返回值",res)
+              }
+              
+            })
+            wx.showToast({
+              title: '上架成功',
+            })
+          }
+
+          //全部成功 重置
+          var reset={
+            portraitURL : that.data.portraitURL,
+            detailImages : that.data.detailImages,
+            uploadRoughInfo :that.data.uploadRoughInfo,
+            currentTab : that.data.currentTab
+          }
+      
+          reset.portraitURL = "../../picture/add.png",
+          reset.detailImages = ["../../picture/add.png"],
+          reset.uploadRoughInfo = {
+            name:"",shoper:"",type:"",portrait:"",moreimg:"",
+            uploadDetails:[
+              {goodsStock:0,goodsPrice:0,goodsColor:"",goodsStyle:"",goodsSize:""}
+            ]
+          }
+          reset.currentTab = 1;
+      
+          that.setData(reset)
+        }
+      }
+    })  
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -346,9 +605,15 @@ Page({
         }
       })
     }
+    else if(this.data.currentTab==2)
+    {
+      var data = {
+        uploadRoughInfo : this.data.uploadRoughInfo
+      }
+      data.uploadRoughInfo.shoper = app.globalData.openId
+      this.setData(data)
+    }
   },
-
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
